@@ -164,6 +164,24 @@ const dashboard = () => {
   const finalRecentOrder = recentOrders.slice(0, 10);
   console.log(finalRecentOrder);
 
+  const topOrders = [];
+  result.forEach((order) => {
+    let inserteds = false;
+    for (let i = 0; i < topOrders.length; i++) {
+      if (order.minimumOrderQuantity > topOrders[i].minimumOrderQuantity) {
+        topOrders.splice(i, 0, order);
+        inserteds = true;
+        break;
+      }
+    }
+    if (!inserteds) {
+      topOrders.push(order);
+    }
+  });
+  console.log(topOrders);
+  const topTenOrders = topOrders.slice(0, 10);
+  console.log(topTenOrders);
+
   let weeklyResult = {};
   let size = 7;
   let count = 1;
@@ -414,17 +432,28 @@ const dashboard = () => {
 
         {/* big dashboard start */}
         <div className="px-3 w-full flex flex-col md:flex-row h-[70vh] md:h-[50vh]  gap-2 justify-between items-center">
-          <div className="w-full md:w-[68%] border border-gray-500 h-full rounded-sm">
+          <div className="w-full md:w-[68%] xl:w-[73%] border border-gray-500 h-full rounded-sm">
             <div className="py-4 flex justify-center items-center  border-b border-gray-500 font-bold text-sm">
               Sales Analytics
             </div>
             <div className="w-full h-[89%] ">
               <div className="h-[20%] w-full flex justify-end items-center pr-5">
-                <select className="px-5 py-3 outline-none rounded-md bg-(--dcbtn)" name="" id="" value={activeWeek} onChange={handleWeek}>
-                {Object.keys(weeklyResult).map((resul) => (
-                  <option className="bg-(--dcsbg) active:bg-(--dcmgb) text-white px-3 py-1" value={resul}>{resul}</option>
-                ))}
-              </select>
+                <select
+                  className="px-5 py-3 outline-none rounded-md bg-(--dcbtn)"
+                  name=""
+                  id=""
+                  value={activeWeek}
+                  onChange={handleWeek}
+                >
+                  {Object.keys(weeklyResult).map((resul) => (
+                    <option
+                      className="bg-(--dcsbg) active:bg-(--dcmgb) text-white px-3 py-1"
+                      value={resul}
+                    >
+                      {resul}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="w-full h-[80%]  ">
                 <ResponsiveContainer width="100%" height="100%">
@@ -469,24 +498,53 @@ const dashboard = () => {
                         fill: "#fff",
                         stroke: "#77D3EC",
                         strokeWidth: 2,
-                      }} 
+                      }}
                       activeDot={{
                         r: 6,
                         fill: "#77D3EC",
                         stroke: "#3094B8",
                         strokeWidth: 2,
-                      }} 
+                      }}
                     />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
             </div>
           </div>
-          <div className="w-full md:w-[30%] border border-gray-500 h-full rounded-sm">
+          <div className="w-full md:w-[30%] xl:w-[25%] border border-gray-500 h-full rounded-sm">
             <div className="py-4 flex justify-center items-center  border-b border-gray-500 font-bold text-sm">
               Top Selling Products
             </div>
-            <div></div>
+            <div className="p-1 w-full h-[85%] overflow-auto scrollbar-hide">
+              {topTenOrders.map((order, idx) => (
+                <div key={idx} className="w-full my-1 relative">
+                  <div className="w-full h-14  px-1 border border-gray-600 flex  justify-start items-center gap-3">
+                    <div className="  w-10 h-10 rounded-full bg-gray-100">
+                      <img
+                        className="w-full h-full object-cover object-center"
+                        src={order.images[0]}
+                        alt={order.title}
+                      />
+                    </div>
+                    <div className="w-[80%] ">
+                      <div className="text-md  font-thin truncate overflow-hidden">
+                        {order.title}
+                      </div>
+                      <div className="w-full  flex justify-start items-center ">
+                        <div className="text-sm flex justify-start items-center gap-2 px-2 border-r">
+                          <span>Sales</span>
+                          <span>{order.stock}</span>
+                        </div>
+                        <div className="text-sm flex justify-start items-center gap-2  px-2">
+                          <span>Sale</span>
+                          <span>{order.minimumOrderQuantity}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
