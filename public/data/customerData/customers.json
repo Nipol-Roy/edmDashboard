@@ -1,0 +1,1568 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Mark Wilson",
+      "email": "mark.wilson36@example.com",
+      "phone": "+8801131252896",
+      "status": "active",
+      "type": "new",
+      "joined": "2024-01-12",
+      "totalOrders": 13,
+      "totalSpend": 331.9,
+      "avatar": "https://i.pravatar.cc/150?img=7",
+      "orders": [
+        {
+          "orderId": "#51639",
+          "date": "2025-06-27",
+          "status": "Shipped",
+          "total": 496.66
+        },
+        {
+          "orderId": "#27604",
+          "date": "2025-07-18",
+          "status": "Cancelled",
+          "total": 246.3
+        },
+        {
+          "orderId": "#28954",
+          "date": "2025-04-05",
+          "status": "Shipped",
+          "total": 223.65
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Michael Taylor",
+      "email": "michael.taylor19@example.com",
+      "phone": "+8801962711892",
+      "status": "inactive",
+      "type": "returning",
+      "joined": "2024-01-08",
+      "totalOrders": 9,
+      "totalSpend": 804.65,
+      "avatar": "https://i.pravatar.cc/150?img=12",
+      "orders": [
+        {
+          "orderId": "#85866",
+          "date": "2025-07-23",
+          "status": "Cancelled",
+          "total": 27.87
+        },
+        {
+          "orderId": "#99068",
+          "date": "2025-05-04",
+          "status": "Cancelled",
+          "total": 168.52
+        },
+        {
+          "orderId": "#43437",
+          "date": "2026-01-26",
+          "status": "Cancelled",
+          "total": 282.24
+        },
+        {
+          "orderId": "#37740",
+          "date": "2025-08-31",
+          "status": "Processing",
+          "total": 380.62
+        },
+        {
+          "orderId": "#30038",
+          "date": "2025-02-21",
+          "status": "Processing",
+          "total": 351.89
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Donna Sanchez",
+      "email": "donna.sanchez21@example.com",
+      "phone": "+8801992994812",
+      "status": "active",
+      "type": "returning",
+      "joined": "2025-06-04",
+      "totalOrders": 11,
+      "totalSpend": 709.13,
+      "avatar": "https://i.pravatar.cc/150?img=69",
+      "orders": [
+        {
+          "orderId": "#68597",
+          "date": "2025-07-03",
+          "status": "Delivered",
+          "total": 107.6
+        },
+        {
+          "orderId": "#85343",
+          "date": "2025-11-16",
+          "status": "Delivered",
+          "total": 150.63
+        },
+        {
+          "orderId": "#84305",
+          "date": "2025-09-23",
+          "status": "Shipped",
+          "total": 318.06
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Betty Brown",
+      "email": "betty.brown86@example.com",
+      "phone": "+8801125156844",
+      "status": "inactive",
+      "type": "returning",
+      "joined": "2023-11-26",
+      "totalOrders": 18,
+      "totalSpend": 1007.5,
+      "avatar": "https://i.pravatar.cc/150?img=69",
+      "orders": [
+        {
+          "orderId": "#69478",
+          "date": "2025-08-09",
+          "status": "Delivered",
+          "total": 201.02
+        },
+        {
+          "orderId": "#91089",
+          "date": "2025-04-04",
+          "status": "Cancelled",
+          "total": 108.19
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Matthew Ramirez",
+      "email": "matthew.ramirez84@example.com",
+      "phone": "+8801730824495",
+      "status": "active",
+      "type": "returning",
+      "joined": "2023-07-14",
+      "totalOrders": 16,
+      "totalSpend": 1112.22,
+      "avatar": "https://i.pravatar.cc/150?img=35",
+      "orders": [
+        {
+          "orderId": "#99109",
+          "date": "2026-01-08",
+          "status": "Cancelled",
+          "total": 347.11
+        },
+        {
+          "orderId": "#97727",
+          "date": "2026-01-30",
+          "status": "Cancelled",
+          "total": 78.53
+        },
+        {
+          "orderId": "#71054",
+          "date": "2025-08-03",
+          "status": "Cancelled",
+          "total": 440.24
+        },
+        {
+          "orderId": "#95115",
+          "date": "2025-06-22",
+          "status": "Shipped",
+          "total": 340.08
+        },
+        {
+          "orderId": "#59775",
+          "date": "2025-07-19",
+          "status": "Delivered",
+          "total": 147.91
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Mary Robinson",
+      "email": "mary.robinson82@example.com",
+      "phone": "+8801111412246",
+      "status": "active",
+      "type": "returning",
+      "joined": "2023-11-02",
+      "totalOrders": 7,
+      "totalSpend": 506.3,
+      "avatar": "https://i.pravatar.cc/150?img=21",
+      "orders": [
+        {
+          "orderId": "#11074",
+          "date": "2025-10-07",
+          "status": "Delivered",
+          "total": 427.39
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Karen Miller",
+      "email": "karen.miller87@example.com",
+      "phone": "+8801995913863",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2025-01-07",
+      "totalOrders": 18,
+      "totalSpend": 1946.92,
+      "avatar": "https://i.pravatar.cc/150?img=6",
+      "orders": [
+        {
+          "orderId": "#86905",
+          "date": "2026-01-27",
+          "status": "Cancelled",
+          "total": 30.86
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Elizabeth Williams",
+      "email": "elizabeth.williams82@example.com",
+      "phone": "+8801875764254",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-06-04",
+      "totalOrders": 18,
+      "totalSpend": 705.49,
+      "avatar": "https://i.pravatar.cc/150?img=1",
+      "orders": [
+        {
+          "orderId": "#57833",
+          "date": "2025-10-10",
+          "status": "Delivered",
+          "total": 440.05
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Melissa Anderson",
+      "email": "melissa.anderson35@example.com",
+      "phone": "+8801997651599",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2023-05-22",
+      "totalOrders": 3,
+      "totalSpend": 1073.47,
+      "avatar": "https://i.pravatar.cc/150?img=51",
+      "orders": [
+        {
+          "orderId": "#49443",
+          "date": "2025-11-25",
+          "status": "Cancelled",
+          "total": 110.38
+        },
+        {
+          "orderId": "#41808",
+          "date": "2025-11-06",
+          "status": "Shipped",
+          "total": 41.91
+        },
+        {
+          "orderId": "#28604",
+          "date": "2025-05-14",
+          "status": "Shipped",
+          "total": 393.97
+        },
+        {
+          "orderId": "#50829",
+          "date": "2025-03-21",
+          "status": "Delivered",
+          "total": 245.69
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Kenneth Anderson",
+      "email": "kenneth.anderson87@example.com",
+      "phone": "+8801175662701",
+      "status": "active",
+      "type": "new",
+      "joined": "2025-03-15",
+      "totalOrders": 10,
+      "totalSpend": 332.33,
+      "avatar": "https://i.pravatar.cc/150?img=62",
+      "orders": [
+        {
+          "orderId": "#98281",
+          "date": "2025-12-16",
+          "status": "Delivered",
+          "total": 309.66
+        },
+        {
+          "orderId": "#40473",
+          "date": "2025-12-17",
+          "status": "Delivered",
+          "total": 495.8
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Melissa Gonzalez",
+      "email": "melissa.gonzalez29@example.com",
+      "phone": "+8801760331546",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-05-31",
+      "totalOrders": 18,
+      "totalSpend": 1435.8,
+      "avatar": "https://i.pravatar.cc/150?img=63",
+      "orders": [
+        {
+          "orderId": "#72935",
+          "date": "2025-11-14",
+          "status": "Cancelled",
+          "total": 250.29
+        },
+        {
+          "orderId": "#21452",
+          "date": "2025-05-29",
+          "status": "Delivered",
+          "total": 366.2
+        },
+        {
+          "orderId": "#62894",
+          "date": "2025-11-30",
+          "status": "Delivered",
+          "total": 148.35
+        },
+        {
+          "orderId": "#24185",
+          "date": "2026-01-26",
+          "status": "Delivered",
+          "total": 391.27
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Christopher Jones",
+      "email": "christopher.jones69@example.com",
+      "phone": "+8801926950478",
+      "status": "active",
+      "type": "new",
+      "joined": "2025-03-04",
+      "totalOrders": 10,
+      "totalSpend": 1354.17,
+      "avatar": "https://i.pravatar.cc/150?img=45",
+      "orders": [
+        {
+          "orderId": "#19325",
+          "date": "2025-06-23",
+          "status": "Cancelled",
+          "total": 23.26
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Deborah Williams",
+      "email": "deborah.williams92@example.com",
+      "phone": "+8801723702154",
+      "status": "inactive",
+      "type": "returning",
+      "joined": "2025-02-12",
+      "totalOrders": 14,
+      "totalSpend": 1040.53,
+      "avatar": "https://i.pravatar.cc/150?img=10",
+      "orders": [
+        {
+          "orderId": "#41308",
+          "date": "2025-05-09",
+          "status": "Shipped",
+          "total": 489.8
+        },
+        {
+          "orderId": "#98498",
+          "date": "2025-10-05",
+          "status": "Cancelled",
+          "total": 37.75
+        },
+        {
+          "orderId": "#76399",
+          "date": "2025-04-20",
+          "status": "Cancelled",
+          "total": 371.72
+        },
+        {
+          "orderId": "#84266",
+          "date": "2025-09-22",
+          "status": "Cancelled",
+          "total": 31.66
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Lisa Anderson",
+      "email": "lisa.anderson34@example.com",
+      "phone": "+8801446444303",
+      "status": "inactive",
+      "type": "returning",
+      "joined": "2023-12-01",
+      "totalOrders": 15,
+      "totalSpend": 1999.25,
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "orders": [
+        {
+          "orderId": "#48524",
+          "date": "2025-08-10",
+          "status": "Cancelled",
+          "total": 406.98
+        },
+        {
+          "orderId": "#64950",
+          "date": "2025-04-19",
+          "status": "Delivered",
+          "total": 220.93
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Margaret Thomas",
+      "email": "margaret.thomas80@example.com",
+      "phone": "+8801106480346",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2024-11-02",
+      "totalOrders": 14,
+      "totalSpend": 1936.79,
+      "avatar": "https://i.pravatar.cc/150?img=46",
+      "orders": [
+        {
+          "orderId": "#30067",
+          "date": "2025-07-10",
+          "status": "Cancelled",
+          "total": 173.52
+        },
+        {
+          "orderId": "#74117",
+          "date": "2026-01-04",
+          "status": "Delivered",
+          "total": 181.47
+        },
+        {
+          "orderId": "#90351",
+          "date": "2025-02-17",
+          "status": "Shipped",
+          "total": 175.44
+        },
+        {
+          "orderId": "#88598",
+          "date": "2025-08-28",
+          "status": "Cancelled",
+          "total": 316.32
+        },
+        {
+          "orderId": "#74122",
+          "date": "2025-08-03",
+          "status": "Processing",
+          "total": 142.16
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "James Davis",
+      "email": "james.davis89@example.com",
+      "phone": "+8801830711691",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2026-01-24",
+      "totalOrders": 11,
+      "totalSpend": 750.12,
+      "avatar": "https://i.pravatar.cc/150?img=17",
+      "orders": [
+        {
+          "orderId": "#54974",
+          "date": "2025-03-15",
+          "status": "Processing",
+          "total": 349.67
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Mark Rodriguez",
+      "email": "mark.rodriguez98@example.com",
+      "phone": "+8801693930424",
+      "status": "inactive",
+      "type": "returning",
+      "joined": "2023-08-31",
+      "totalOrders": 1,
+      "totalSpend": 331.73,
+      "avatar": "https://i.pravatar.cc/150?img=58",
+      "orders": [
+        {
+          "orderId": "#97377",
+          "date": "2025-12-29",
+          "status": "Delivered",
+          "total": 70.32
+        },
+        {
+          "orderId": "#49710",
+          "date": "2025-11-21",
+          "status": "Processing",
+          "total": 454.25
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Emily Williams",
+      "email": "emily.williams35@example.com",
+      "phone": "+8801187699217",
+      "status": "active",
+      "type": "returning",
+      "joined": "2026-01-09",
+      "totalOrders": 2,
+      "totalSpend": 916.96,
+      "avatar": "https://i.pravatar.cc/150?img=2",
+      "orders": [
+        {
+          "orderId": "#46048",
+          "date": "2026-01-30",
+          "status": "Processing",
+          "total": 67.88
+        },
+        {
+          "orderId": "#48035",
+          "date": "2025-07-22",
+          "status": "Processing",
+          "total": 98.24
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Sandra Williams",
+      "email": "sandra.williams54@example.com",
+      "phone": "+8801553433192",
+      "status": "active",
+      "type": "returning",
+      "joined": "2023-11-16",
+      "totalOrders": 14,
+      "totalSpend": 1783.31,
+      "avatar": "https://i.pravatar.cc/150?img=41",
+      "orders": [
+        {
+          "orderId": "#94740",
+          "date": "2025-11-15",
+          "status": "Delivered",
+          "total": 431.14
+        },
+        {
+          "orderId": "#43320",
+          "date": "2026-01-04",
+          "status": "Shipped",
+          "total": 378.18
+        },
+        {
+          "orderId": "#42925",
+          "date": "2025-03-12",
+          "status": "Cancelled",
+          "total": 284.17
+        },
+        {
+          "orderId": "#12210",
+          "date": "2025-10-19",
+          "status": "Shipped",
+          "total": 23.4
+        },
+        {
+          "orderId": "#99003",
+          "date": "2025-03-04",
+          "status": "Cancelled",
+          "total": 344.15
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Carol Martin",
+      "email": "carol.martin47@example.com",
+      "phone": "+8801720644221",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2024-03-15",
+      "totalOrders": 4,
+      "totalSpend": 1071.42,
+      "avatar": "https://i.pravatar.cc/150?img=2",
+      "orders": [
+        {
+          "orderId": "#32052",
+          "date": "2025-07-10",
+          "status": "Delivered",
+          "total": 46.8
+        },
+        {
+          "orderId": "#93025",
+          "date": "2025-12-21",
+          "status": "Shipped",
+          "total": 55.64
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Barbara Martinez",
+      "email": "barbara.martinez52@example.com",
+      "phone": "+8801221250512",
+      "status": "inactive",
+      "type": "returning",
+      "joined": "2024-06-18",
+      "totalOrders": 10,
+      "totalSpend": 749.6,
+      "avatar": "https://i.pravatar.cc/150?img=52",
+      "orders": [
+        {
+          "orderId": "#44817",
+          "date": "2025-03-03",
+          "status": "Shipped",
+          "total": 196.32
+        },
+        {
+          "orderId": "#13346",
+          "date": "2025-02-26",
+          "status": "Cancelled",
+          "total": 323.32
+        },
+        {
+          "orderId": "#65933",
+          "date": "2025-04-02",
+          "status": "Shipped",
+          "total": 271.9
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Karen Thompson",
+      "email": "karen.thompson69@example.com",
+      "phone": "+8801865736992",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2025-02-01",
+      "totalOrders": 18,
+      "totalSpend": 1579.54,
+      "avatar": "https://i.pravatar.cc/150?img=24",
+      "orders": [
+        {
+          "orderId": "#76395",
+          "date": "2025-12-04",
+          "status": "Delivered",
+          "total": 308.58
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Robert Moore",
+      "email": "robert.moore56@example.com",
+      "phone": "+8801462431568",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2025-10-01",
+      "totalOrders": 19,
+      "totalSpend": 898.68,
+      "avatar": "https://i.pravatar.cc/150?img=20",
+      "orders": [
+        {
+          "orderId": "#51864",
+          "date": "2025-09-08",
+          "status": "Delivered",
+          "total": 90.15
+        },
+        {
+          "orderId": "#13038",
+          "date": "2025-07-03",
+          "status": "Cancelled",
+          "total": 455.8
+        },
+        {
+          "orderId": "#81851",
+          "date": "2025-08-11",
+          "status": "Shipped",
+          "total": 319.66
+        },
+        {
+          "orderId": "#18116",
+          "date": "2026-01-01",
+          "status": "Cancelled",
+          "total": 134.32
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Charles Taylor",
+      "email": "charles.taylor11@example.com",
+      "phone": "+8801166551138",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-11-21",
+      "totalOrders": 1,
+      "totalSpend": 572.19,
+      "avatar": "https://i.pravatar.cc/150?img=14",
+      "orders": [
+        {
+          "orderId": "#83519",
+          "date": "2025-11-14",
+          "status": "Cancelled",
+          "total": 281.43
+        },
+        {
+          "orderId": "#12248",
+          "date": "2025-03-16",
+          "status": "Cancelled",
+          "total": 41.41
+        },
+        {
+          "orderId": "#35606",
+          "date": "2025-05-22",
+          "status": "Processing",
+          "total": 353.85
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Andrew Hernandez",
+      "email": "andrew.hernandez66@example.com",
+      "phone": "+8801168496812",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2024-11-24",
+      "totalOrders": 11,
+      "totalSpend": 227.31,
+      "avatar": "https://i.pravatar.cc/150?img=41",
+      "orders": [
+        {
+          "orderId": "#66594",
+          "date": "2025-10-23",
+          "status": "Delivered",
+          "total": 226.05
+        },
+        {
+          "orderId": "#86665",
+          "date": "2025-07-02",
+          "status": "Shipped",
+          "total": 300.85
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Matthew Williams",
+      "email": "matthew.williams84@example.com",
+      "phone": "+8801701137196",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2025-02-14",
+      "totalOrders": 10,
+      "totalSpend": 1730.09,
+      "avatar": "https://i.pravatar.cc/150?img=9",
+      "orders": [
+        {
+          "orderId": "#86021",
+          "date": "2025-11-21",
+          "status": "Delivered",
+          "total": 26.09
+        },
+        {
+          "orderId": "#91849",
+          "date": "2025-04-20",
+          "status": "Processing",
+          "total": 383.54
+        },
+        {
+          "orderId": "#85194",
+          "date": "2025-09-19",
+          "status": "Cancelled",
+          "total": 381.91
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Daniel Perez",
+      "email": "daniel.perez65@example.com",
+      "phone": "+8801956078228",
+      "status": "active",
+      "type": "returning",
+      "joined": "2023-10-29",
+      "totalOrders": 8,
+      "totalSpend": 131.71,
+      "avatar": "https://i.pravatar.cc/150?img=38",
+      "orders": [
+        {
+          "orderId": "#16135",
+          "date": "2025-03-13",
+          "status": "Delivered",
+          "total": 367.92
+        },
+        {
+          "orderId": "#39465",
+          "date": "2025-08-31",
+          "status": "Shipped",
+          "total": 87.55
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Brian Perez",
+      "email": "brian.perez15@example.com",
+      "phone": "+8801280972680",
+      "status": "inactive",
+      "type": "returning",
+      "joined": "2024-06-09",
+      "totalOrders": 10,
+      "totalSpend": 261.33,
+      "avatar": "https://i.pravatar.cc/150?img=62",
+      "orders": [
+        {
+          "orderId": "#89873",
+          "date": "2025-09-07",
+          "status": "Shipped",
+          "total": 196.59
+        },
+        {
+          "orderId": "#93513",
+          "date": "2026-01-04",
+          "status": "Processing",
+          "total": 307.88
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Amanda Garcia",
+      "email": "amanda.garcia48@example.com",
+      "phone": "+8801235161003",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-07-22",
+      "totalOrders": 15,
+      "totalSpend": 1817.14,
+      "avatar": "https://i.pravatar.cc/150?img=17",
+      "orders": [
+        {
+          "orderId": "#19430",
+          "date": "2025-09-26",
+          "status": "Delivered",
+          "total": 74.76
+        },
+        {
+          "orderId": "#57900",
+          "date": "2025-05-07",
+          "status": "Delivered",
+          "total": 105.71
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Sandra Moore",
+      "email": "sandra.moore65@example.com",
+      "phone": "+8801313922473",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2025-02-04",
+      "totalOrders": 2,
+      "totalSpend": 1974.12,
+      "avatar": "https://i.pravatar.cc/150?img=30",
+      "orders": [
+        {
+          "orderId": "#14203",
+          "date": "2025-03-07",
+          "status": "Processing",
+          "total": 369.92
+        },
+        {
+          "orderId": "#38944",
+          "date": "2025-11-27",
+          "status": "Delivered",
+          "total": 137.05
+        },
+        {
+          "orderId": "#74085",
+          "date": "2025-10-03",
+          "status": "Shipped",
+          "total": 133.65
+        },
+        {
+          "orderId": "#54318",
+          "date": "2025-12-12",
+          "status": "Delivered",
+          "total": 167.22
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Sarah Thompson",
+      "email": "sarah.thompson61@example.com",
+      "phone": "+8801460156701",
+      "status": "active",
+      "type": "returning",
+      "joined": "2025-07-02",
+      "totalOrders": 8,
+      "totalSpend": 1637.62,
+      "avatar": "https://i.pravatar.cc/150?img=32",
+      "orders": [
+        {
+          "orderId": "#98788",
+          "date": "2026-01-11",
+          "status": "Delivered",
+          "total": 301.66
+        },
+        {
+          "orderId": "#96197",
+          "date": "2026-01-05",
+          "status": "Shipped",
+          "total": 174.28
+        },
+        {
+          "orderId": "#88086",
+          "date": "2025-04-29",
+          "status": "Shipped",
+          "total": 319.32
+        },
+        {
+          "orderId": "#59648",
+          "date": "2025-05-02",
+          "status": "Shipped",
+          "total": 403.45
+        },
+        {
+          "orderId": "#70633",
+          "date": "2025-04-28",
+          "status": "Delivered",
+          "total": 344.07
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Mary Martin",
+      "email": "mary.martin54@example.com",
+      "phone": "+8801282107316",
+      "status": "active",
+      "type": "new",
+      "joined": "2025-09-13",
+      "totalOrders": 2,
+      "totalSpend": 92.82,
+      "avatar": "https://i.pravatar.cc/150?img=1",
+      "orders": [
+        {
+          "orderId": "#64093",
+          "date": "2025-08-11",
+          "status": "Shipped",
+          "total": 486.28
+        },
+        {
+          "orderId": "#38296",
+          "date": "2025-02-20",
+          "status": "Shipped",
+          "total": 197.73
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Brian Lewis",
+      "email": "brian.lewis31@example.com",
+      "phone": "+8801155339494",
+      "status": "active",
+      "type": "new",
+      "joined": "2025-01-09",
+      "totalOrders": 15,
+      "totalSpend": 670.37,
+      "avatar": "https://i.pravatar.cc/150?img=60",
+      "orders": [
+        {
+          "orderId": "#73088",
+          "date": "2025-07-06",
+          "status": "Shipped",
+          "total": 24.46
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Michael Anderson",
+      "email": "michael.anderson73@example.com",
+      "phone": "+8801267053493",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2026-01-31",
+      "totalOrders": 17,
+      "totalSpend": 1516.57,
+      "avatar": "https://i.pravatar.cc/150?img=64",
+      "orders": [
+        {
+          "orderId": "#30141",
+          "date": "2025-06-25",
+          "status": "Shipped",
+          "total": 214.08
+        },
+        {
+          "orderId": "#95473",
+          "date": "2025-04-22",
+          "status": "Processing",
+          "total": 102.67
+        },
+        {
+          "orderId": "#10189",
+          "date": "2025-08-03",
+          "status": "Shipped",
+          "total": 332.91
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Michael Johnson",
+      "email": "michael.johnson20@example.com",
+      "phone": "+8801792221910",
+      "status": "active",
+      "type": "returning",
+      "joined": "2025-05-04",
+      "totalOrders": 1,
+      "totalSpend": 1294.24,
+      "avatar": "https://i.pravatar.cc/150?img=55",
+      "orders": [
+        {
+          "orderId": "#92477",
+          "date": "2025-09-13",
+          "status": "Cancelled",
+          "total": 360.09
+        },
+        {
+          "orderId": "#39599",
+          "date": "2025-05-12",
+          "status": "Cancelled",
+          "total": 136.43
+        },
+        {
+          "orderId": "#11553",
+          "date": "2025-04-14",
+          "status": "Delivered",
+          "total": 277.52
+        },
+        {
+          "orderId": "#56161",
+          "date": "2025-08-26",
+          "status": "Processing",
+          "total": 192.08
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Susan Brown",
+      "email": "susan.brown55@example.com",
+      "phone": "+8801759759695",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-09-05",
+      "totalOrders": 6,
+      "totalSpend": 254.76,
+      "avatar": "https://i.pravatar.cc/150?img=70",
+      "orders": [
+        {
+          "orderId": "#57554",
+          "date": "2025-12-25",
+          "status": "Cancelled",
+          "total": 296.05
+        },
+        {
+          "orderId": "#41251",
+          "date": "2025-09-04",
+          "status": "Processing",
+          "total": 467.48
+        },
+        {
+          "orderId": "#60281",
+          "date": "2026-01-28",
+          "status": "Delivered",
+          "total": 192.96
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Sarah Lopez",
+      "email": "sarah.lopez86@example.com",
+      "phone": "+8801341877295",
+      "status": "active",
+      "type": "new",
+      "joined": "2026-01-29",
+      "totalOrders": 14,
+      "totalSpend": 1687.24,
+      "avatar": "https://i.pravatar.cc/150?img=55",
+      "orders": [
+        {
+          "orderId": "#56892",
+          "date": "2025-12-03",
+          "status": "Delivered",
+          "total": 495.4
+        },
+        {
+          "orderId": "#17214",
+          "date": "2025-08-22",
+          "status": "Shipped",
+          "total": 409.15
+        },
+        {
+          "orderId": "#45401",
+          "date": "2025-12-26",
+          "status": "Processing",
+          "total": 195.64
+        },
+        {
+          "orderId": "#20732",
+          "date": "2025-06-21",
+          "status": "Shipped",
+          "total": 447.8
+        },
+        {
+          "orderId": "#71997",
+          "date": "2025-05-07",
+          "status": "Cancelled",
+          "total": 105.08
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Susan Ramirez",
+      "email": "susan.ramirez37@example.com",
+      "phone": "+8801691379266",
+      "status": "active",
+      "type": "new",
+      "joined": "2025-05-04",
+      "totalOrders": 7,
+      "totalSpend": 106.75,
+      "avatar": "https://i.pravatar.cc/150?img=53",
+      "orders": [
+        {
+          "orderId": "#50717",
+          "date": "2025-05-24",
+          "status": "Delivered",
+          "total": 152.3
+        },
+        {
+          "orderId": "#34151",
+          "date": "2025-12-22",
+          "status": "Shipped",
+          "total": 329.05
+        },
+        {
+          "orderId": "#80726",
+          "date": "2026-01-21",
+          "status": "Processing",
+          "total": 347.56
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Melissa Jones",
+      "email": "melissa.jones52@example.com",
+      "phone": "+8801425085474",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2026-01-26",
+      "totalOrders": 16,
+      "totalSpend": 576.08,
+      "avatar": "https://i.pravatar.cc/150?img=35",
+      "orders": [
+        {
+          "orderId": "#79117",
+          "date": "2025-04-19",
+          "status": "Delivered",
+          "total": 176.1
+        },
+        {
+          "orderId": "#58354",
+          "date": "2026-01-12",
+          "status": "Processing",
+          "total": 282.28
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Jennifer Davis",
+      "email": "jennifer.davis77@example.com",
+      "phone": "+8801312902654",
+      "status": "active",
+      "type": "new",
+      "joined": "2023-06-14",
+      "totalOrders": 15,
+      "totalSpend": 1142.09,
+      "avatar": "https://i.pravatar.cc/150?img=16",
+      "orders": [
+        {
+          "orderId": "#64605",
+          "date": "2026-02-06",
+          "status": "Delivered",
+          "total": 160.33
+        },
+        {
+          "orderId": "#85516",
+          "date": "2025-02-15",
+          "status": "Shipped",
+          "total": 385.06
+        },
+        {
+          "orderId": "#85155",
+          "date": "2025-07-12",
+          "status": "Processing",
+          "total": 266.09
+        },
+        {
+          "orderId": "#13695",
+          "date": "2025-07-03",
+          "status": "Delivered",
+          "total": 236.54
+        },
+        {
+          "orderId": "#34727",
+          "date": "2025-04-12",
+          "status": "Shipped",
+          "total": 328.66
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Michelle Lee",
+      "email": "michelle.lee42@example.com",
+      "phone": "+8801809757173",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2024-02-25",
+      "totalOrders": 12,
+      "totalSpend": 255.48,
+      "avatar": "https://i.pravatar.cc/150?img=67",
+      "orders": [
+        {
+          "orderId": "#55787",
+          "date": "2025-02-28",
+          "status": "Shipped",
+          "total": 367.9
+        },
+        {
+          "orderId": "#76430",
+          "date": "2026-01-06",
+          "status": "Processing",
+          "total": 380.38
+        },
+        {
+          "orderId": "#69818",
+          "date": "2025-06-10",
+          "status": "Shipped",
+          "total": 411.47
+        },
+        {
+          "orderId": "#65500",
+          "date": "2025-12-13",
+          "status": "Shipped",
+          "total": 174.27
+        },
+        {
+          "orderId": "#43736",
+          "date": "2025-07-19",
+          "status": "Cancelled",
+          "total": 484.36
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Sandra Johnson",
+      "email": "sandra.johnson25@example.com",
+      "phone": "+8801753105079",
+      "status": "inactive",
+      "type": "new",
+      "joined": "2023-11-04",
+      "totalOrders": 1,
+      "totalSpend": 76.77,
+      "avatar": "https://i.pravatar.cc/150?img=31",
+      "orders": [
+        {
+          "orderId": "#54319",
+          "date": "2025-04-07",
+          "status": "Shipped",
+          "total": 73.82
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Mark Perez",
+      "email": "mark.perez40@example.com",
+      "phone": "+8801957349450",
+      "status": "active",
+      "type": "new",
+      "joined": "2025-01-27",
+      "totalOrders": 15,
+      "totalSpend": 591.35,
+      "avatar": "https://i.pravatar.cc/150?img=53",
+      "orders": [
+        {
+          "orderId": "#69794",
+          "date": "2025-08-10",
+          "status": "Cancelled",
+          "total": 108.86
+        },
+        {
+          "orderId": "#93682",
+          "date": "2025-10-22",
+          "status": "Delivered",
+          "total": 226.79
+        },
+        {
+          "orderId": "#43662",
+          "date": "2026-01-17",
+          "status": "Shipped",
+          "total": 294.95
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Amanda Johnson",
+      "email": "amanda.johnson15@example.com",
+      "phone": "+8801368877867",
+      "status": "active",
+      "type": "new",
+      "joined": "2023-09-02",
+      "totalOrders": 2,
+      "totalSpend": 469.23,
+      "avatar": "https://i.pravatar.cc/150?img=7",
+      "orders": [
+        {
+          "orderId": "#98610",
+          "date": "2025-05-03",
+          "status": "Shipped",
+          "total": 120.53
+        },
+        {
+          "orderId": "#33902",
+          "date": "2025-04-29",
+          "status": "Shipped",
+          "total": 31.23
+        },
+        {
+          "orderId": "#18077",
+          "date": "2025-03-16",
+          "status": "Processing",
+          "total": 492.21
+        },
+        {
+          "orderId": "#82473",
+          "date": "2025-12-27",
+          "status": "Processing",
+          "total": 480.96
+        },
+        {
+          "orderId": "#62680",
+          "date": "2025-02-25",
+          "status": "Cancelled",
+          "total": 236.57
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Donna White",
+      "email": "donna.white12@example.com",
+      "phone": "+8801505564569",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-08-18",
+      "totalOrders": 10,
+      "totalSpend": 1568.51,
+      "avatar": "https://i.pravatar.cc/150?img=59",
+      "orders": [
+        {
+          "orderId": "#35942",
+          "date": "2025-03-04",
+          "status": "Cancelled",
+          "total": 342.4
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Donald Smith",
+      "email": "donald.smith12@example.com",
+      "phone": "+8801669050036",
+      "status": "inactive",
+      "type": "returning",
+      "joined": "2025-11-23",
+      "totalOrders": 11,
+      "totalSpend": 859.72,
+      "avatar": "https://i.pravatar.cc/150?img=5",
+      "orders": [
+        {
+          "orderId": "#44476",
+          "date": "2026-01-20",
+          "status": "Cancelled",
+          "total": 103.37
+        },
+        {
+          "orderId": "#63458",
+          "date": "2026-01-16",
+          "status": "Cancelled",
+          "total": 124.29
+        },
+        {
+          "orderId": "#18179",
+          "date": "2025-08-19",
+          "status": "Delivered",
+          "total": 162.56
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "name": "Paul Williams",
+      "email": "paul.williams85@example.com",
+      "phone": "+8801306767670",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-08-12",
+      "totalOrders": 20,
+      "totalSpend": 290.93,
+      "avatar": "https://i.pravatar.cc/150?img=29",
+      "orders": [
+        {
+          "orderId": "#26605",
+          "date": "2025-08-20",
+          "status": "Shipped",
+          "total": 248.66
+        },
+        {
+          "orderId": "#83766",
+          "date": "2025-03-06",
+          "status": "Cancelled",
+          "total": 466.59
+        },
+        {
+          "orderId": "#61103",
+          "date": "2025-09-02",
+          "status": "Delivered",
+          "total": 81.49
+        },
+        {
+          "orderId": "#50014",
+          "date": "2025-07-14",
+          "status": "Delivered",
+          "total": 408.49
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Joshua Harris",
+      "email": "joshua.harris36@example.com",
+      "phone": "+8801526662543",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-03-09",
+      "totalOrders": 19,
+      "totalSpend": 1712.56,
+      "avatar": "https://i.pravatar.cc/150?img=18",
+      "orders": [
+        {
+          "orderId": "#84759",
+          "date": "2025-04-21",
+          "status": "Processing",
+          "total": 394.35
+        },
+        {
+          "orderId": "#35232",
+          "date": "2025-06-26",
+          "status": "Shipped",
+          "total": 399.16
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Kimberly Davis",
+      "email": "kimberly.davis64@example.com",
+      "phone": "+8801994793637",
+      "status": "active",
+      "type": "returning",
+      "joined": "2023-11-11",
+      "totalOrders": 11,
+      "totalSpend": 557.04,
+      "avatar": "https://i.pravatar.cc/150?img=66",
+      "orders": [
+        {
+          "orderId": "#72282",
+          "date": "2025-02-24",
+          "status": "Cancelled",
+          "total": 258.14
+        },
+        {
+          "orderId": "#87871",
+          "date": "2025-03-21",
+          "status": "Cancelled",
+          "total": 265.19
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Mark Hernandez",
+      "email": "mark.hernandez38@example.com",
+      "phone": "+8801836923042",
+      "status": "active",
+      "type": "returning",
+      "joined": "2024-04-21",
+      "totalOrders": 12,
+      "totalSpend": 1217.46,
+      "avatar": "https://i.pravatar.cc/150?img=12",
+      "orders": [
+        {
+          "orderId": "#82124",
+          "date": "2026-01-16",
+          "status": "Shipped",
+          "total": 106.73
+        },
+        {
+          "orderId": "#36680",
+          "date": "2025-07-06",
+          "status": "Processing",
+          "total": 346.15
+        },
+        {
+          "orderId": "#94934",
+          "date": "2025-03-01",
+          "status": "Cancelled",
+          "total": 289.62
+        },
+        {
+          "orderId": "#35151",
+          "date": "2026-01-07",
+          "status": "Processing",
+          "total": 269.3
+        }
+      ]
+    }
+  ]
+}
