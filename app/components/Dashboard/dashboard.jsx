@@ -417,7 +417,7 @@ const dashboard = () => {
               </div>
             </div>
           </div>
-          <div className=" h-50 rounded-md  bg-[#8e30c51a]">
+          <div className=" h-50 rounded-md   bg-[#8e30c51a]">
             <div className="w-full p-1 flex justify-center items-center gap-2">
               <div className="p-1 inline-block rounded-lg bg-[#a710ff] text-white">
                 <MdProductionQuantityLimits />
@@ -697,7 +697,8 @@ const dashboard = () => {
           <div className="border border-gray-700 p-3">
             {tenActivityData.map((activity,idx) => (
               <div key={idx} className="flex items-center w-full gap-2  my-2">
-                <div className="w-[50%] border border-gray-700  py-2 px-4 ">1</div>
+                <div className="w-[50%] border border-gray-700  py-2 px-4 ">{
+                  activity.type === "order" && activity.status === "placed" ? "" : activity.type === "order" }</div>
                 <div className="w-[25%] border border-gray-700  py-2 px-4 ">2</div>
                 <div className="w-[25%] border border-gray-700  py-2 px-4 ">3</div>
               </div>
