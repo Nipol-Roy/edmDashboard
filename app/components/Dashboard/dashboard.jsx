@@ -5,17 +5,16 @@ import { FaFirstOrder } from "react-icons/fa";
 import { IoMdContacts } from "react-icons/io";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { IoMdArrowDropup } from "react-icons/io";
+import { MdPlayArrow } from "react-icons/md";
 
 import { MdShoppingBasket } from "react-icons/md";
-{/* <MdShoppingBasket /> */}
-import { PiShoppingBagFill } from "react-icons/pi";
-{/* <PiShoppingBagFill /> */}
-import { MdShop } from "react-icons/md";
-{/* <MdShop /> */}
 import { RiContactsFill } from "react-icons/ri";
-{/* <RiContactsFill /> */}
-
-
+import { MdShop } from "react-icons/md";
+import { SiProcessingfoundation } from "react-icons/si";
+import { AiOutlineDeliveredProcedure } from "react-icons/ai";
+import { MdOutlinePayment } from "react-icons/md";
+import { FcPaid } from "react-icons/fc";
+import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 
 import {
   LineChart,
@@ -31,6 +30,8 @@ import {
   Pie,
   Legend,
   Cell,
+  BarChart,
+  Bar,
 } from "recharts";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -39,7 +40,7 @@ import { orderData } from "@/public/data/orderdata/data";
 import { addOrders } from "@/app/redux/slices/orderSlice";
 import { setCustomer } from "@/app/redux/slices/customerSlice";
 import { fetchProduct } from "@/app/redux/slices/productSlice";
-import { format } from "date-fns";
+import { format, formatDistanceToNowStrict } from "date-fns";
 import activityData from "../../../public/data/activityData/activity.json";
 
 const dashboard = () => {
@@ -61,6 +62,7 @@ const dashboard = () => {
   const { result } = useSelector((state) => state.product);
   const { allCustomer } = useSelector((state) => state.customerList);
 
+  console.log(totalOrders);
   console.log(result);
   console.log(allCustomer);
 
@@ -68,9 +70,25 @@ const dashboard = () => {
     (order) => order.status === "Delivered",
   );
 
-  const totalOrder = totalOrders.length;
-  console.log(totalOrders);
+  const forBarChartOrderList = totalOrders.filter(
+    (order) => order.status !== "Cancelled",
+  );
+  console.log(forBarChartOrderList);
 
+  const forBarChartDeta = [];
+
+  forBarChartOrderList.map((order) => {
+    const validDate = new Date(order.createdAt).toLocaleString("default", {
+      weekday: "short",
+    });
+    forBarChartDeta.push({
+      name: validDate,
+      total: order.total,
+    });
+  });
+  console.log(forBarChartDeta);
+
+  const totalOrder = totalOrders.length;
   const totalProduct = result.length;
   const totalCustomers = allCustomer.length;
 
@@ -483,8 +501,9 @@ const dashboard = () => {
                   value={activeWeek}
                   onChange={handleWeek}
                 >
-                  {Object.keys(weeklyResult).map((resul,idx) => (
-                    <option key={idx}
+                  {Object.keys(weeklyResult).map((resul, idx) => (
+                    <option
+                      key={idx}
                       className="bg-(--dcsbg) active:bg-(--dcmgb) text-white px-3 py-1"
                       value={resul}
                     >
@@ -591,11 +610,20 @@ const dashboard = () => {
 
         <div className="p-3 w-full md:flex  gap-2   justify-between items-center">
           <div className="w-full h-80 md:w-[69%] border border-gray-700  rounded-sm">
-            <div className="p-4  font-bold text-md">Revenue This Month</div>
-            <div></div>
+            <div className="p-4  font-bold text-md w-full flex justify-center items-center">Revenue This Month</div>
+            <div className="w-full h-[80%]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={forBarChartDeta}>
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip cursor={{ fill: "#00000020" }} />
+                  <Bar dataKey="total" fill="#316C50" radius={[6, 6, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
-          <div className="w-full md:w-[40%] border border-gray-700  h-80 relative rounded-sm">
-            <div className=" p-3  font-bold text-md">Orders Status</div>
+          <div className="w-full md:w-[30%] border border-gray-700  h-80 relative rounded-sm">
+            <div className=" p-3  font-bold text-md  w-full flex justify-center items-center">Orders Status</div>
             <div className="w-full   h-68">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -670,7 +698,7 @@ const dashboard = () => {
                         <td className="p-2">${order.total}</td>
                         <td className=" flex justify-center items-center p-2">
                           <div
-                            className={ ` w-27 text-black p-1 rounded-md  ${order.status === "Pending" ? "bg-[#FFDF20]" : order.status === "Processing" ? "bg-[#8EC5FF]" : order.status === "Delivered" ? "bg-[#7BF1A8]" : "bg-[#cf2d2d] text-white"}`}
+                            className={` w-27 text-black p-1 rounded-md  ${order.status === "Pending" ? "bg-[#FFDF20]" : order.status === "Processing" ? "bg-[#8EC5FF]" : order.status === "Delivered" ? "bg-[#7BF1A8]" : "bg-[#cf2d2d] text-white"}`}
                           >
                             {order.status}
                           </div>
@@ -690,21 +718,130 @@ const dashboard = () => {
         {/* recent activity  List start */}
 
         <div className="p-3 flex   justify-center items-center">
-         <div className="w-full ">
-           <div className="w-full border border-gray-700 h-full p-3">
-            Recent Activity
+          <div className="w-full ">
+            <div className="w-full border border-gray-700 h-full p-3">
+              Recent Activity
+            </div>
+            <div className="border xl:px-10 border-gray-700  p-3">
+              {tenActivityData.map((activity, idx) => (
+                <div key={idx} className="flex items-center w-full gap-2">
+                  <div className="w-full border border-gray-700 flex justify-between items-center ">
+                    {activity.type === "order" &&
+                    activity.status === "placed" ? (
+                      <div className="flex justify-start items-center ">
+                        <span className="text-lg lg:text-xl px-3 lg:px-5 text-gray-400">
+                          <MdShoppingBasket />
+                        </span>
+                        {activity.userName} Placed an Order (#{activity.orderId}
+                        ) for ${Math.round(activity.amount)}
+                      </div>
+                    ) : activity.type === "order" &&
+                      activity.status === "cancelled" ? (
+                      <div className="flex justify-start items-center ">
+                        <span className="text-lg lg:text-xl px-2 lg:px-5 text-gray-400">
+                          <MdShop />
+                        </span>
+                        {activity.userName}'s Order (#{activity.orderId}) for $
+                        {activity.amount} was {activity.status}
+                      </div>
+                    ) : activity.type === "order" &&
+                      activity.status === "processing" ? (
+                      <div className="flex justify-start items-center ">
+                        <span className="text-lg lg:text-xl px-2 lg:px-5 text-gray-400">
+                          <SiProcessingfoundation />
+                        </span>
+                        {activity.userName}'s Order is (#{activity.orderId}) for
+                        ${Math.round(activity.amount)} now {activity.status}
+                      </div>
+                    ) : activity.type === "order" &&
+                      activity.status === "delivered" ? (
+                      <div className="flex justify-start items-center ">
+                        <span className="text-lg lg:text-xl px-2 lg:px-5 text-gray-400">
+                          <AiOutlineDeliveredProcedure />
+                        </span>
+                        {activity.userName}'s Order (#{activity.orderId}) for $
+                        {Math.round(activity.amount)} was {activity.status}
+                      </div>
+                    ) : activity.type === "user" &&
+                      activity.action === "registered" ? (
+                      <div className="flex justify-start items-center ">
+                        <span className="text-lg lg:text-xl px-2 lg:px-5 text-gray-400">
+                          <RiContactsFill />
+                        </span>
+                        {activity.userName} {activity.action} as a new{" "}
+                        {activity.type}
+                      </div>
+                    ) : activity.type === "payment" &&
+                      activity.status === "failed" ? (
+                      <div className="flex justify-start items-center ">
+                        <span className="text-lg lg:text-xl px-2 lg:px-5 text-gray-400">
+                          <MdOutlinePayment />
+                        </span>
+                        {activity.userName}'s Order (#{activity.orderId}) for $
+                        {Math.round(activity.amount)} {activity.type} has{" "}
+                        {activity.status}
+                      </div>
+                    ) : activity.type === "payment" &&
+                      activity.status === "paid" ? (
+                      <div className="flex justify-start items-center ">
+                        <span className="text-lg lg:text-xl px-2 lg:px-5 text-gray-400">
+                          <FcPaid />
+                        </span>
+                        {activity.userName}'s Order (#{activity.orderId}) for $
+                        {Math.round(activity.amount)} successfully{" "}
+                        {activity.status}
+                      </div>
+                    ) : activity.type === "user" &&
+                      activity.action === "updated_profile" ? (
+                      <div className="flex justify-start items-center ">
+                        <span className="text-lg lg:text-xl px-2 lg:px-5 text-gray-400">
+                          <MdOutlineSystemUpdateAlt />
+                        </span>
+                        {activity.userName}'s Profile is Successfully Updated
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+
+                    <div className=" flex justify-end gap-2 items-center ">
+                      <div className=" border-r border-gray-700 flex justify-center items-center  w-40 gap-2 py-1 px-4 ">
+                        <div
+                          className={`"text-lg" ${
+                            activity.status === "cancelled"
+                              ? " text-[#EF4444]"
+                              : activity.status === "processing"
+                                ? " text-[#3B82F6]"
+                                : activity.status === "delivered"
+                                  ? " text-[#22C55E]"
+                                  : activity.action === "registered"
+                                    ? " text-[#6366F1]"
+                                    : activity.status === "failed"
+                                      ? " text-[#DC2626]"
+                                      : activity.status === "paid"
+                                        ? " text-[#10B981]"
+                                        : activity.action === "updated_profile"
+                                          ? " text-[#8B5CF6]"
+                                          : ""
+                          }`}
+                        >
+                          <MdPlayArrow />
+                        </div>
+                        <div>
+                          {formatDistanceToNowStrict(activity.createdAt, {
+                            addSuffix: true,
+                          })}
+                        </div>
+                      </div>
+
+                      <div className="  border-gray-700 w-30  py-2 px-4 ">
+                        {format(activity.createdAt, "dd MM yyyy")}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="border border-gray-700 p-3">
-            {tenActivityData.map((activity,idx) => (
-              <div key={idx} className="flex items-center w-full gap-2  my-2">
-                <div className="w-[50%] border border-gray-700  py-2 px-4 ">{
-                  activity.type === "order" && activity.status === "placed" ? "" : activity.type === "order" }</div>
-                <div className="w-[25%] border border-gray-700  py-2 px-4 ">2</div>
-                <div className="w-[25%] border border-gray-700  py-2 px-4 ">3</div>
-              </div>
-            ))}
-          </div>
-         </div>
         </div>
 
         {/* recent activity List end */}
