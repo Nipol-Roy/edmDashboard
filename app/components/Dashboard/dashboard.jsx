@@ -6,6 +6,17 @@ import { IoMdContacts } from "react-icons/io";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { IoMdArrowDropup } from "react-icons/io";
 
+import { MdShoppingBasket } from "react-icons/md";
+{/* <MdShoppingBasket /> */}
+import { PiShoppingBagFill } from "react-icons/pi";
+{/* <PiShoppingBagFill /> */}
+import { MdShop } from "react-icons/md";
+{/* <MdShop /> */}
+import { RiContactsFill } from "react-icons/ri";
+{/* <RiContactsFill /> */}
+
+
+
 import {
   LineChart,
   Line,
@@ -16,6 +27,10 @@ import {
   YAxis,
   CartesianGrid,
   Area,
+  PieChart,
+  Pie,
+  Legend,
+  Cell,
 } from "recharts";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -25,6 +40,7 @@ import { addOrders } from "@/app/redux/slices/orderSlice";
 import { setCustomer } from "@/app/redux/slices/customerSlice";
 import { fetchProduct } from "@/app/redux/slices/productSlice";
 import { format } from "date-fns";
+import activityData from "../../../public/data/activityData/activity.json";
 
 const dashboard = () => {
   const dispatch = useDispatch();
@@ -183,11 +199,11 @@ const dashboard = () => {
   console.log(topTenOrders);
 
   let weeklyResult = {};
-  let size = 7;
-  let count = 1;
+  let weekSize = 7;
+  let weekCount = 1;
 
-  for (let i = 0; i < recentOrders.length; i += size) {
-    let resu = recentOrders.slice(i, i + size);
+  for (let i = 0; i < recentOrders.length; i += weekSize) {
+    let resu = recentOrders.slice(i, i + weekSize);
     let mainres = [];
     resu.map((ord) => {
       let setDate = new Date(ord.createdAt).toLocaleString("default", {
@@ -199,9 +215,9 @@ const dashboard = () => {
         total: ord.total,
       });
     });
-    weeklyResult[`last ${count} week`] = mainres;
+    weeklyResult[`last ${weekCount} week`] = mainres;
 
-    count++;
+    weekCount++;
   }
   console.log(weeklyResult);
   const [activeWeek, setActiveWeek] = useState("last 1 week");
@@ -209,6 +225,28 @@ const dashboard = () => {
   const handleWeek = (e) => {
     setActiveWeek(e.target.value);
   };
+
+  const pieChartData = {};
+
+  totalOrders.forEach((order) => {
+    pieChartData[order.status] = (pieChartData[order.status] || 0) + 1;
+  });
+
+  const mainPieChartData = Object.keys(pieChartData).map((data) => ({
+    data,
+    total: pieChartData[data],
+  }));
+
+  console.log(mainPieChartData);
+
+  const COLORS = ["#003366", "#006400", "#FFD700", "#800000"];
+
+  // activity Data
+
+  const activity = activityData.activity;
+
+  const tenActivityData = activity.slice(0, 10);
+  console.log(tenActivityData);
 
   return (
     <div className="w-full relative flex justify-center items-center bg-(--dcmbg)">
@@ -431,8 +469,8 @@ const dashboard = () => {
         {/* firstchart end */}
 
         {/* big dashboard start */}
-        <div className="px-3 w-full flex flex-col md:flex-row h-[70vh] md:h-[50vh]  gap-2 justify-between items-center">
-          <div className="w-full md:w-[68%] xl:w-[73%] border border-gray-500 h-full rounded-sm">
+        <div className="px-3 w-full flex flex-col md:flex-row   gap-2 justify-between items-center">
+          <div className="w-full md:w-[68%] xl:w-[74%] border border-gray-500 h-125 rounded-sm">
             <div className="py-4 flex justify-center items-center  border-b border-gray-500 font-bold text-sm">
               Sales Analytics
             </div>
@@ -445,8 +483,8 @@ const dashboard = () => {
                   value={activeWeek}
                   onChange={handleWeek}
                 >
-                  {Object.keys(weeklyResult).map((resul) => (
-                    <option
+                  {Object.keys(weeklyResult).map((resul,idx) => (
+                    <option key={idx}
                       className="bg-(--dcsbg) active:bg-(--dcmgb) text-white px-3 py-1"
                       value={resul}
                     >
@@ -511,15 +549,15 @@ const dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="w-full md:w-[30%] xl:w-[25%] border border-gray-500 h-full rounded-sm">
+          <div className="w-full md:w-[30%] xl:w-[24.5%] border border-gray-500 h-125 rounded-sm relative">
             <div className="py-4 flex justify-center items-center  border-b border-gray-500 font-bold text-sm">
               Top Selling Products
             </div>
-            <div className="p-1 w-full h-[85%] overflow-auto scrollbar-hide">
+            <div className="p-1 w-full h-[88%]  overflow-auto scrollbar-hide">
               {topTenOrders.map((order, idx) => (
                 <div key={idx} className="w-full my-1 relative">
-                  <div className="w-full h-14  px-1 border border-gray-600 flex  justify-start items-center gap-3">
-                    <div className="  w-10 h-10 rounded-full bg-gray-100">
+                  <div className="w-full h-14  px-1  flex  justify-start items-center border-b border-gray-500 gap-3">
+                    <div className=" w-10 h-10 rounded-lg overflow-hidden  bg-gray-100">
                       <img
                         className="w-full h-full object-cover object-center"
                         src={order.images[0]}
@@ -551,14 +589,41 @@ const dashboard = () => {
         {/* big dashboard end */}
         {/* revenue chart start*/}
 
-        <div className="p-3 w-full md:flex  gap-2 md:h-50  justify-between items-center">
-          <div className="w-full md:w-[49%] border border-gray-700 h-full rounded-sm">
+        <div className="p-3 w-full md:flex  gap-2   justify-between items-center">
+          <div className="w-full h-80 md:w-[69%] border border-gray-700  rounded-sm">
             <div className="p-4  font-bold text-md">Revenue This Month</div>
             <div></div>
           </div>
-          <div className="w-full md:w-[49%] border border-gray-700 h-full rounded-sm">
-            <div className="p-4  font-bold text-md">Pending Orders</div>
-            <div></div>
+          <div className="w-full md:w-[40%] border border-gray-700  h-80 relative rounded-sm">
+            <div className=" p-3  font-bold text-md">Orders Status</div>
+            <div className="w-full   h-68">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={mainPieChartData}
+                    dataKey="total"
+                    nameKey="data"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={100}
+                    label
+                    stroke="none"
+                  >
+                    {mainPieChartData.map((entry, index) => (
+                      <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "#fff",
+                      border: "none",
+                    }}
+                    labelStyle={{ color: "#fff" }}
+                  />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
 
@@ -578,8 +643,8 @@ const dashboard = () => {
               <table className="w-full border-collapse">
                 <thead className="">
                   <tr className=" w-full  bg-(--dcsbg)">
-                    <th className="p-2 ">Order Id</th>
-                    <th className="p-2 ">Customer</th>
+                    <th className="p-2 text-left px-5 ">Order Id</th>
+                    <th className="p-2 text-left">Customer</th>
                     <th className="p-2">Quantity</th>
                     <th className="p-2">Amount</th>
                     <th className="p-2">Status</th>
@@ -597,18 +662,18 @@ const dashboard = () => {
                         key={idx}
                         className="text-center odd:bg-(--dcmgb) even:bg-(--dcsbg)"
                       >
-                        <td className="p-2">#{order.orderId}</td>
+                        <td className="p-2 px-5 text-left">#{order.orderId}</td>
                         <td className="p-2 text-left ">
                           {order.customer.name}
                         </td>
                         <td>{order.items[0].quantity}</td>
                         <td className="p-2">${order.total}</td>
-                        <td className="">
-                          <span
-                            className={`text-black p-1 rounded-full ${order.status === "Pending" ? "bg-[#FFDF20]" : order.status === "Processing" ? "bg-[#8EC5FF]" : order.status === "Delivered" ? "bg-[#7BF1A8]" : "bg-[#E5E7EB]"}`}
+                        <td className=" flex justify-center items-center p-2">
+                          <div
+                            className={ ` w-27 text-black p-1 rounded-md  ${order.status === "Pending" ? "bg-[#FFDF20]" : order.status === "Processing" ? "bg-[#8EC5FF]" : order.status === "Delivered" ? "bg-[#7BF1A8]" : "bg-[#cf2d2d] text-white"}`}
                           >
                             {order.status}
-                          </span>
+                          </div>
                         </td>
                         <td className="p-2">{date}</td>
                       </tr>
@@ -624,10 +689,21 @@ const dashboard = () => {
 
         {/* recent activity  List start */}
 
-        <div className="p-3 flex h-75 justify-center items-center">
-          <div className="w-full border border-gray-700 h-full p-3">
+        <div className="p-3 flex   justify-center items-center">
+         <div className="w-full ">
+           <div className="w-full border border-gray-700 h-full p-3">
             Recent Activity
           </div>
+          <div className="border border-gray-700 p-3">
+            {tenActivityData.map((activity,idx) => (
+              <div key={idx} className="flex items-center w-full gap-2  my-2">
+                <div className="w-[50%] border border-gray-700  py-2 px-4 ">1</div>
+                <div className="w-[25%] border border-gray-700  py-2 px-4 ">2</div>
+                <div className="w-[25%] border border-gray-700  py-2 px-4 ">3</div>
+              </div>
+            ))}
+          </div>
+         </div>
         </div>
 
         {/* recent activity List end */}
