@@ -36,40 +36,24 @@ const Customers = () => {
           <IoSearch className="text-xl" />
           <input type="text" className="outline-none" />
         </div>
-        <div className="relative ">
-          <div
-            onClick={() => setOpenDropFIlter(!openDropFilter)}
-            className="flex justify-center items-center gap-1 cursor-pointer  p-2 bg-(--dcbtn) rounded-md"
-          >
-            <span className="font-bold text-md">Filter</span>{" "}
-            <MdOutlineKeyboardArrowRight className="text-2xl" />
-          </div>
-
-          <div
-            className={`${openDropFilter ? "flex flex-col" : "hidden"} absolute  z-1 -bottom-68.75  right-0 bg-(--dcmbg) rounded-md`}
-          >
-            <div
-              onClick={() => setOpenDropFIlter(!openDropFilter)}
-              className="absolute top-1 text-white font-bold hover:scale-120 active:scale-90 transition duration-200 cursor-pointer p-1 rounded-full  right-3 text-2xl"
-            >
-              <IoMdClose />
+        <div className="flex items-center gap-2 ">
+              <select
+                
+                name=""
+                id=""
+                className="bg-(--dcmbg) text-md border-none h-10 w-60 p-3 rounded-md outline-none "
+              >
+                <option defaultChecked >Sort Customers</option>
+                <option value="sortById">Sort By Id</option>
+                <option value="highToLow">Top To Bottom Spended</option>
+                <option value="lowToHigh">Bottom To Top Spended </option>
+                <option value="alphabeticalOrder">A To Z sort</option>
+                <option value="newCustomers">New Customers</option>
+                <option value="returningCustomers">returning Customers</option>
+                <option value="vipCustomers">VIP Customers</option>
+                <option value="topOrderCustomer">Top Orders Customer</option>
+              </select>
             </div>
-            <div className="relative  flex flex-col justify-center items-center gap-2 p-3 mt-6 ">
-              <div className="w-50 border p-3 rounded-md bg-(--dcbtn) flex justify-center cursor-pointer items-center font-bold">
-                All
-              </div>
-              <div className="w-50 border p-3 rounded-md bg-(--dcbtn) flex justify-center cursor-pointer items-center font-bold">
-                VIP
-              </div>
-              <div className="w-50 border p-3 rounded-md bg-(--dcbtn) flex justify-center cursor-pointer items-center font-bold">
-                New
-              </div>
-              <div className="w-50 border p-3 rounded-md bg-(--dcbtn) flex justify-center cursor-pointer items-center font-bold">
-                Return
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* all total */}

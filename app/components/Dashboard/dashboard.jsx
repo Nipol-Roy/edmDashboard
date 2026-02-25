@@ -81,10 +81,15 @@ const dashboard = () => {
     const validDate = new Date(order.createdAt).toLocaleString("default", {
       weekday: "short",
     });
-    forBarChartDeta.push({
+    const validMonth = new Date(order.createdAt).toLocaleString("default", {
+      month: "2-digit",
+    });
+    if(validMonth === "01"){
+      forBarChartDeta.push({
       name: validDate,
       total: order.total,
     });
+    }
   });
   console.log(forBarChartDeta);
 
