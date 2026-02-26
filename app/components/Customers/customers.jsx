@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,56 +16,125 @@ const Customers = () => {
   const [totalCustomer, setTotalCustomer] = useState(0);
   const [openDropFilter, setOpenDropFIlter] = useState(false);
 
-  
-
   useEffect(() => {
     console.log(allCustomer);
     setTotalCustomer(allCustomer?.length);
   }, [allCustomer]);
-    console.log(allCustomer)
+  console.log(allCustomer);
 
-
-
- const typeStyles = {
+  const typeStyles = {
     new: "border-blue-300 text-blue-700 bg-blue-100",
     returning: "border-green-300 text-green-700 bg-green-100",
     vip: "border-yellow-400 text-yellow-700 bg-yellow-100",
     default: "border-gray-300 text-gray-700 bg-gray-100",
   };
 
-      const [sortingCustomer,setSortingCustomer] = useState("")
+  const [sortingCustomer, setSortingCustomer] = useState("");
 
-  const newCustomers = allCustomer.filter((customer)=> customer.type === "new")
-  const returningCustomers = allCustomer.filter((customer)=> customer.type === "returning")
-  const VIPCustomers = allCustomer.filter((customer)=> customer.type === "vip")
+  const newCustomers = allCustomer.filter(
+    (customer) => customer.type === "new",
+  );
+  const returningCustomers = allCustomer.filter(
+    (customer) => customer.type === "returning",
+  );
+  const VIPCustomers = allCustomer.filter(
+    (customer) => customer.type === "vip",
+  );
 
+  const handleSort = (e) => {
+    setSortingCustomer(e.target.value);
+  };
+  console.log(sortingCustomer);
 
-  const handleSort = (e)=>{
-    setSortingCustomer(e.target.value)
-  }
-console.log(sortingCustomer)
+  const topToBottomSpendSorting = [];
 
-const topToBottomSpantSorting = []
+  allCustomer.forEach((order) => {
+    let inserted = false;
 
- allCustomer.forEach((order)=>{
-  let inserted = false
-
-  for(let i = 0; i<topToBottomSpantSorting.length; i++){
-    if(order.totalSpend > topToBottomSpantSorting[i].totalSpend){
-      topToBottomSpantSorting.splice(i,0,order)
-      inserted = true
-      break
+    for (let i = 0; i < topToBottomSpendSorting.length; i++) {
+      if (order.totalSpend > topToBottomSpendSorting[i].totalSpend) {
+        topToBottomSpendSorting.splice(i, 0, order);
+        inserted = true;
+        break;
+      }
     }
-  }
-  if(!inserted){
-    topToBottomSpantSorting.push(order)
-  }
- })
+    if (!inserted) {
+      topToBottomSpendSorting.push(order);
+    }
+  });
 
- console.log(topToBottomSpantSorting)
+  console.log(topToBottomSpendSorting);
 
+  const bottomToTopSpendingSorting = [];
+  allCustomer.forEach((order) => {
+    let inserted = false;
+    for (let i = 0; i < bottomToTopSpendingSorting.length; i++) {
+      if (order.totalSpend < bottomToTopSpendingSorting[i].totalSpend) {
+        bottomToTopSpendingSorting.splice(i, 0, order);
+        inserted = true;
+        break;
+      }
+    }
+    if (!inserted) {
+      bottomToTopSpendingSorting.push(order);
+    }
+  });
+  console.log(bottomToTopSpendingSorting);
 
+  const TopOrderPlasedCustomers = [];
 
+  allCustomer.forEach((order) => {
+    let inserted = false;
+    for (let i = 0; i < TopOrderPlasedCustomers.length; i++) {
+      if (order.totalOrders > TopOrderPlasedCustomers[i].totalOrders) {
+        TopOrderPlasedCustomers.splice(i, 0, order);
+        inserted = true;
+        break;
+      }
+    }
+    if (!inserted) {
+      TopOrderPlasedCustomers.push(order);
+    }
+  });
+
+  console.log(TopOrderPlasedCustomers);
+
+  const aTozSort = [...allCustomer].sort((a, b) =>
+    (a.name || "").toLowerCase().localeCompare((b.name || "").toLowerCase()),
+  );
+
+  console.log(aTozSort);
+
+  const topOrderCustomer = [];
+  allCustomer.forEach((order) => {
+    let inserted = false;
+    for (let i = 0; i < topOrderCustomer.length; i++) {
+      if (order.totalOrders > topOrderCustomer[i].totalOrders) {
+        topOrderCustomer.splice(i, 0, order);
+        inserted = true
+        break
+      }
+    }
+    if (!inserted) {
+      topOrderCustomer.push(order);
+    }
+  });
+
+  const sortedCustomers =
+    sortingCustomer === "highToLow"
+      ? topToBottomSpendSorting
+      : sortingCustomer === "lowToHigh"
+        ? bottomToTopSpendingSorting
+        : sortingCustomer === "alphabeticalOrder"
+          ? aTozSort
+          : sortingCustomer === "newCustomers"
+            ? newCustomers
+            : sortingCustomer === "returningCustomers"
+              ? returningCustomers
+              : sortingCustomer === "vipCustomers"
+                ? VIPCustomers
+                : sortingCustomer === "topOrderCustomer"
+                ? topOrderCustomer : allCustomer;
 
   return (
     <div className=" relative ">
@@ -75,23 +144,23 @@ const topToBottomSpantSorting = []
           <input type="text" className="outline-none" />
         </div>
         <div className="  gap-2 ">
-              <select
-                onChange={handleSort}
-                value={sortingCustomer}
-                name=""
-                id=""
-                className="bg-(--dcmbg)  text-md border-none h-10 w-60 p-2 rounded-md outline-none "
-              >
-                <option defaultChecked >Sort Customers</option>
-                <option value="highToLow">Top To Bottom Spended</option>
-                <option value="lowToHigh">Bottom To Top Spended </option>
-                <option value="alphabeticalOrder">A To Z sort</option>
-                <option value="newCustomers">New Customers</option>
-                <option value="returningCustomers">returning Customers</option>
-                <option value="vipCustomers">VIP Customers</option>
-                <option value="topOrderCustomer">Top Orders Customer</option>
-              </select>
-            </div>
+          <select
+            onChange={handleSort}
+            value={sortingCustomer}
+            name=""
+            id=""
+            className="bg-(--dcmbg)  text-md border-none h-10 w-60 p-2 rounded-md outline-none "
+          >
+            <option defaultChecked>Sort Customers</option>
+            <option value="highToLow">Top To Bottom Spended</option>
+            <option value="lowToHigh">Bottom To Top Spended </option>
+            <option value="alphabeticalOrder">A To Z sort</option>
+            <option value="newCustomers">New Customers</option>
+            <option value="returningCustomers">returning Customers</option>
+            <option value="vipCustomers">VIP Customers</option>
+            <option value="topOrderCustomer">Top Orders Customer</option>
+          </select>
+        </div>
       </div>
 
       {/* all total */}
@@ -130,7 +199,7 @@ const topToBottomSpantSorting = []
             <div className=" text-md">VIP Customers</div>
           </div>
           <div className="w-full flex justify-center items-center text-3xl font-bold bg-white text-gray-950 h-1/2">
-           {VIPCustomers.length} 
+            {VIPCustomers.length}
           </div>
         </div>
       </div>
@@ -152,7 +221,7 @@ const topToBottomSpantSorting = []
             </tr>
           </thead>
           <tbody className="">
-            {allCustomer.map((customer, idx) => (
+            {sortedCustomers.map((customer, idx) => (
               <tr key={idx} className="odd:bg-(--dcmbg) even:bg-(--dcsbg) ">
                 <td className="p-2 flex justify-start items-center gap-4">
                   <div className="w-10 h-10 rounded-full overflow-hidden ">
