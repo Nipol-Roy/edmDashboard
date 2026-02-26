@@ -187,11 +187,6 @@ const Orders = () => {
                 <option value="ProcessingOrder">Processing Orders</option>
                 <option value="CancelledOrders">Cancelled Orders</option>
               </select>
-
-              {/* <button className="flex items-center gap-1 px-3 py-2 rounded-md bg-(--dcsbg) text-sm">
-            <GoSortDesc className="text-lg" />
-            <span className="hidden sm:block">Sort</span>
-          </button> */}
             </div>
           </div>
         </div>
