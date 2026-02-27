@@ -2,11 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    loginInfo: [],
-    isLogin: false,
-    storeDetails:[],
-    shoppingDetails:[],
-    notificationDetails:[]
+    loginInfo: {name:"nipol"},
+    isLogin: true,
+    isRegistration : true
 
 }
 
@@ -15,22 +13,15 @@ const logInSlice = createSlice({
     initialState,
     reducers: {
         setLogIn(state,action){
-            state.isLogin = action.payload
-            if(!state.loginInfo.length === 0){
-                state.isLogin = true
-            }
+            state.loginInfo = action.payload
+           state.isLogin = true
         },
-        setStore(state,action){
-            state.storeDetails = action.payload
-        },
-        setShoping(state,action){
-            state.shoppingDetails = action.payload
-        },
-        setNotification(state,action){
-            state.notificationDetails = action.payload
+        setLogOut(state){
+            state.loginInfo = null
+            state.isLogin = false
         }
     }
 })
 
-export const {setLogIn,setStore,setShoping,setNotification} = logInSlice.actions
+export const {setLogIn,setLogOut} = logInSlice.actions
 export default logInSlice.reducer

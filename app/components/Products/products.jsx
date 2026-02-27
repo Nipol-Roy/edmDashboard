@@ -103,7 +103,7 @@ const products = () => {
         ? prev[type].filter((v) => v !== value)
         : [...prev[type], value],
     }));
-    console.log(selectedFilters);
+   
   };
   const isEmpty =
     selectedFilters.category.length === 0 &&

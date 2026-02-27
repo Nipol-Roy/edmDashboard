@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { IoMdContacts } from "react-icons/io";
@@ -17,10 +17,8 @@ const Customers = () => {
   const [openDropFilter, setOpenDropFIlter] = useState(false);
 
   useEffect(() => {
-    console.log(allCustomer);
     setTotalCustomer(allCustomer?.length);
   }, [allCustomer]);
-  console.log(allCustomer);
 
   const typeStyles = {
     new: "border-blue-300 text-blue-700 bg-blue-100",
@@ -44,7 +42,6 @@ const Customers = () => {
   const handleSort = (e) => {
     setSortingCustomer(e.target.value);
   };
-  console.log(sortingCustomer);
 
   const topToBottomSpendSorting = [];
 
@@ -63,8 +60,6 @@ const Customers = () => {
     }
   });
 
-  console.log(topToBottomSpendSorting);
-
   const bottomToTopSpendingSorting = [];
   allCustomer.forEach((order) => {
     let inserted = false;
@@ -79,7 +74,6 @@ const Customers = () => {
       bottomToTopSpendingSorting.push(order);
     }
   });
-  console.log(bottomToTopSpendingSorting);
 
   const TopOrderPlasedCustomers = [];
 
@@ -97,13 +91,9 @@ const Customers = () => {
     }
   });
 
-  console.log(TopOrderPlasedCustomers);
-
   const aTozSort = [...allCustomer].sort((a, b) =>
     (a.name || "").toLowerCase().localeCompare((b.name || "").toLowerCase()),
   );
-
-  console.log(aTozSort);
 
   const topOrderCustomer = [];
   allCustomer.forEach((order) => {
@@ -111,8 +101,8 @@ const Customers = () => {
     for (let i = 0; i < topOrderCustomer.length; i++) {
       if (order.totalOrders > topOrderCustomer[i].totalOrders) {
         topOrderCustomer.splice(i, 0, order);
-        inserted = true
-        break
+        inserted = true;
+        break;
       }
     }
     if (!inserted) {
@@ -120,28 +110,44 @@ const Customers = () => {
     }
   });
 
-  const sortedCustomers =
-    sortingCustomer === "highToLow"
-      ? topToBottomSpendSorting
-      : sortingCustomer === "lowToHigh"
-        ? bottomToTopSpendingSorting
-        : sortingCustomer === "alphabeticalOrder"
-          ? aTozSort
-          : sortingCustomer === "newCustomers"
-            ? newCustomers
-            : sortingCustomer === "returningCustomers"
-              ? returningCustomers
-              : sortingCustomer === "vipCustomers"
-                ? VIPCustomers
-                : sortingCustomer === "topOrderCustomer"
-                ? topOrderCustomer : allCustomer;
+  const [searchingCustomer, setSearchingCustomer] = useState("");
+  const handleSearchChange = (e) => {
+    setSearchingCustomer(e.target.value);
+  };
+
+  console.log(searchingCustomer);
+
+  const searchingCustomerResult = useMemo(() => {
+    return allCustomer.filter((order)=>
+    order.name.toLowerCase().includes(searchingCustomer.toLowerCase())
+    )
+  });
+console.log(allCustomer)
+  const sorted = {
+    highToLow: topToBottomSpendSorting,
+    lowToHigh: bottomToTopSpendingSorting,
+    alphabeticalOrder: aTozSort,
+    newCustomers: newCustomers,
+    returningCustomers: returningCustomers,
+    vipCustomers: VIPCustomers,
+    topOrderCustomer: topOrderCustomer,
+  };
+
+  const sortedCustomers = searchingCustomer
+    ? searchingCustomerResult
+    : sorted[sortingCustomer] || allCustomer;
 
   return (
     <div className=" relative ">
       <div className="h-16.25 w-full border  border-gray-600 rounded-md  sticky top-0  z-20 left-0 bg-(--dcsbg)   mb-2 flex justify-between px-5 items-center">
         <div className=" flex justify-center items-center bg-(--dcmbg) text-white gap-3 p-2 rounded-md">
           <IoSearch className="text-xl" />
-          <input type="text" className="outline-none" />
+          <input
+            onChange={handleSearchChange}
+            type="text"
+            placeholder="Search your Name..."
+            className="outline-none"
+          />
         </div>
         <div className="  gap-2 ">
           <select
@@ -206,14 +212,14 @@ const Customers = () => {
 
       {/* all total End */}
 
-      <div className="w-full border border-gray-600 mt-2 ">
-        <table className="w-full border-collapse">
+      <div className="w-full border border-gray-600 mt-2 overflow-x-auto ">
+        <table className="min-w-full border-collapse">
           <thead>
             <tr className=" bg-(--dcsbg) h-10">
-              <th className="text-left px-3 font-bold text-md">Name</th>
+              <th className="text-left px-3 font-bold text-md">Customer</th>
               <th className="text-left font-bold text-md">Email</th>
               <th className="text-center  px-3 font-bold text-md">Orders</th>
-              <th className="text-center  w-30 font-bold text-md">
+              <th className="text-center   font-bold text-md">
                 Total Spend
               </th>
               <th className="text-center  px-3 font-bold text-md">Status</th>
@@ -231,20 +237,20 @@ const Customers = () => {
                       alt={customer.name}
                     />
                   </div>
-                  <div className="line-clamp-2">{customer.name}</div>
+                  <div className="line-clamp-1">{customer.name}</div>
                 </td>
-                <td className=" ">{customer.email}</td>
+                <td className="">{customer.email}</td>
                 <td className="text-center">{customer.totalOrders}</td>
-                <td className="text-center  ">{customer.totalSpend}</td>
+                <td className="text-center px-2  ">{customer.totalSpend}</td>
                 <td className="">
                   <div
-                    className={` rounded-md text-md p-2 w-30 flex justify-center items-center border text-center capitalize font-bold ${typeStyles[customer.type] || typeStyles.default} `}
+                    className={` rounded-md text-sm py-1 px-3 text-center  border capitalize font-semibold ${typeStyles[customer.type] || typeStyles.default} `}
                   >
                     {customer.type}
                   </div>
                 </td>
-                <td className="text-left ">
-                  <button className="px-6 mr-2 py-2 bg-(--dcbtn) rounded-md text-white font-bold text-md">
+                <td className="text-center px-2 ">
+                  <button className="px-4 py-1 bg-(--dcbtn) hover:bg-(--dcmb) hover:text-(--dcmbg) cursor-pointer rounded-md text-white font-medium transition text-sm">
                     View
                   </button>
                 </td>

@@ -4,7 +4,7 @@ import { CiSearch, CiFilter } from "react-icons/ci";
 import { GoSortDesc } from "react-icons/go";
 import { format } from "date-fns";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Orders = () => {
@@ -31,12 +31,10 @@ const Orders = () => {
     };
     // orders.price * orders.items[0].quantity
   });
-  console.log(matchingOrders);
 
-  const alphabeticalySorted = matchingOrders?.sort((a, b) => {
-    return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
-  });
-  console.log(alphabeticalySorted);
+  const alphabeticalySorted = matchingOrders?.sort((a, b) =>
+    (a.title || "").toLowerCase().localeCompare((b.title || "").toLowerCase()),
+  );
 
   const latestOrder = [];
   matchingOrders.forEach((order) => {
@@ -55,7 +53,6 @@ const Orders = () => {
       latestOrder.push(order);
     }
   });
-  console.log(latestOrder);
 
   const highPrice = [];
   matchingOrders.forEach((order) => {
@@ -73,8 +70,6 @@ const Orders = () => {
     }
   });
 
-  console.log(highPrice);
-
   const lowPrice = [];
   matchingOrders.forEach((order) => {
     let inserted = false;
@@ -90,70 +85,72 @@ const Orders = () => {
     }
   });
 
-  console.log(lowPrice);
-
   const pendingOrder = matchingOrders.filter(
     (order) => order.status === "Pending",
   );
-  console.log(pendingOrder);
 
   const deliveriedOrder = matchingOrders.filter(
     (order) => order.status === "Delivered",
   );
-  console.log(deliveriedOrder);
+
   const canceledOrder = matchingOrders.filter(
     (order) => order.status === "Cancelled",
   );
-  console.log(canceledOrder);
+
   const processingOrder = matchingOrders.filter(
     (order) => order.status === "Processing",
   );
 
-
-  const sortById = []
-   matchingOrders.forEach((order)=>{
+  const sortById = [];
+  matchingOrders.forEach((order) => {
     let inserted = false;
-    for(let i=0; i < sortById.length; i++){
-      if(order.orderId < sortById[i].orderId){
-        sortById.splice(i,0,order)
-        inserted = true
-  break
+    for (let i = 0; i < sortById.length; i++) {
+      if (order.orderId < sortById[i].orderId) {
+        sortById.splice(i, 0, order);
+        inserted = true;
+        break;
       }
     }
-    if(!inserted){
-      sortById.push(order)
+    if (!inserted) {
+      sortById.push(order);
     }
-  })
-  console.log(sortById)
+  });
 
+  const [searchTeam, setSearchTeam] = useState("");
 
-  console.log(processingOrder);
+  const handleSearch = (e) => {
+    setSearchTeam(e.target.value);
+  };
+
+  console.log(matchingOrders);
+
+  const searchResult = useMemo(() => {
+    return matchingOrders.filter(
+      (order) =>
+        order.customer.name.toLowerCase().includes(searchTeam.toLowerCase()) ||
+        order.orderId.toString().includes(searchTeam.toString()),
+    );
+  }, [matchingOrders, searchTeam]);
+
   const [sortBy, setSortBy] = useState("latestOrders");
 
-  const sorted =
-    sortBy === "pendingOrder"
-      ? pendingOrder
-      : sortBy === "DeliveredOrder"
-        ? deliveriedOrder
-        : sortBy === "CancelledOrders"
-          ? canceledOrder
-          : sortBy === "ProcessingOrder"
-            ? processingOrder
-            : sortBy === "alphabeticalOrder"
-              ? alphabeticalySorted
-              : sortBy === "lowToHigh"
-                ? lowPrice
-                : sortBy === "highToLow"
-                  ? highPrice
-                  : sortBy === "latestOrders"
-                  ? latestOrder : sortBy === "sortById"
-                  ? sortById : matchingOrders;
+  const sortMap = {
+    pendingOrder: pendingOrder,
+    DeliveredOrder: deliveriedOrder,
+    CancelledOrders: canceledOrder,
+    ProcessingOrder: processingOrder,
+    alphabeticalOrder: alphabeticalySorted,
+    lowToHigh: lowPrice,
+    highToLow: highPrice,
+    latestOrders: latestOrder,
+    sortById: sortById,
+  };
+
+  const sorted = searchTeam ? searchResult : sortMap[sortBy] || matchingOrders;
 
   const handleSelect = (e) => {
     setSortBy(e.target.value);
   };
-
-  console.log(sortBy);
 
   return (
     <div className="rounded-md  relative w-full">
@@ -161,11 +158,13 @@ const Orders = () => {
         {/* Search Bar */}
         <div className="sticky top-0 z-20 bg-(--dcmbg) rounded-md border-b border-gray-700">
           <div className="flex w-full justify-between items-center p-3">
-            <div className="flex bg-(--dcsbg) items-center  gap-2 px-3 py-2 rounded-md w-45 sm:w-65">
+            <div className="flex bg-(--dcsbg) items-center  gap-2 px-3 py-2 rounded-md w-60 sm:w-75">
               <CiSearch className="text-xl opacity-70" />
               <input
+                value={searchTeam}
+                onChange={handleSearch}
                 type="text"
-                placeholder="Search orders..."
+                placeholder="Search Name Or Order Id.."
                 className="bg-transparent outline-none text-sm w-full"
               />
             </div>
@@ -206,16 +205,16 @@ const Orders = () => {
             </thead>
             <tbody>
               {sorted.map((orders, idx) => {
-                const totalPrice = (orders.price).toFixed(2);
+                const totalPrice = orders.price.toFixed(2);
                 const date = format(new Date(orders.createdAt), "dd MMM yyyy");
                 return (
                   <tr
                     key={orders.orderId}
                     className="odd:bg-(--dcsbg) even:bg-(--dcmbg) border-b border-gray-700"
                   >
-                    <td className="p-3 text-center">{orders.orderId}</td>
-                    <td className="p-3 text-center">{orders.customer.name}</td>
-                    <td className="p-3">
+                    <td className="p-1 text-center">{orders.orderId}</td>
+                    <td className="p-1 text-center">{orders.customer.name}</td>
+                    <td className="p-1">
                       <div className="flex items-center gap-3">
                         <span className="bg-white w-12 h-12 p-1 rounded-full flex justify-center items-center shrink-0">
                           <img
@@ -229,11 +228,11 @@ const Orders = () => {
                         </span>
                       </div>
                     </td>
-                    <td className="p-3 text-center">
+                    <td className="p-1 text-center">
                       {orders.items[0].quantity}
                     </td>
-                    <td className="p-3 text-center">${totalPrice}</td>
-                    <td className="p-3 text-center">
+                    <td className="p-1 text-center">${totalPrice}</td>
+                    <td className="p-1 text-center">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           statusStyles[orders.status] ||
@@ -243,7 +242,7 @@ const Orders = () => {
                         {orders.status}
                       </span>
                     </td>
-                    <td className="p-3 text-center whitespace-nowrap">
+                    <td className="p-1 text-center whitespace-nowrap">
                       {date}
                     </td>
                   </tr>

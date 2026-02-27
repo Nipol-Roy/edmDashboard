@@ -4,6 +4,7 @@ import tabsSlice from "./slices/tabsSlice";
 import productSlice from "./slices/productSlice"
 import OrderSlice from "./slices/orderSlice"
 import customerSlice from "./slices/customerSlice"
+import LogInSlice from "./slices/logInSlice"
 
 export const reduxStore = configureStore({
     reducer:{
@@ -11,6 +12,7 @@ export const reduxStore = configureStore({
         tabs:tabsSlice,
         product: productSlice,
         orders: OrderSlice,
-        customerList:customerSlice
+        customerList:customerSlice,
+        Login:LogInSlice
     }
 })

@@ -62,9 +62,7 @@ const dashboard = () => {
   const { result } = useSelector((state) => state.product);
   const { allCustomer } = useSelector((state) => state.customerList);
 
-  console.log(totalOrders);
-  console.log(result);
-  console.log(allCustomer);
+ 
 
   const completeSales = totalOrders.filter(
     (order) => order.status === "Delivered",
@@ -73,7 +71,7 @@ const dashboard = () => {
   const forBarChartOrderList = totalOrders.filter(
     (order) => order.status !== "Cancelled",
   );
-  console.log(forBarChartOrderList);
+ 
 
   const forBarChartDeta = [];
 
@@ -91,7 +89,7 @@ const dashboard = () => {
     });
     }
   });
-  console.log(forBarChartDeta);
+
 
   const totalOrder = totalOrders.length;
   const totalProduct = result.length;
@@ -115,15 +113,15 @@ const dashboard = () => {
       amount: sale.total,
     });
   });
-  console.log(completeSales);
+  
 
   const validOrders = totalOrders.filter(
     (order) => order.status !== "Cancelled",
   );
-  console.log(validOrders);
+ 
 
   const newOrders = validOrders.filter((order) => order.status !== "Delivered");
-  console.log(newOrders);
+
 
   let totalNewOrders = 0;
   for (const order of validOrders) {
@@ -141,7 +139,7 @@ const dashboard = () => {
       status: totalNewOrders,
     });
   });
-  console.log(orderDetails);
+
 
   const months = {};
   allCustomer.forEach((custom) => {
@@ -156,9 +154,9 @@ const dashboard = () => {
     month,
     total: months[month],
   }));
-  console.log(customers);
 
-  console.log(totalSales, totalOrder, totalProduct, totalCustomers);
+
+
 
   const acc = {};
   result.forEach((product) => {
@@ -173,7 +171,7 @@ const dashboard = () => {
     category: category,
     quantity: acc[category],
   }));
-  console.log(chartData);
+ 
 
   let totalProducts = 0;
   for (const pro of chartData) {
@@ -198,10 +196,10 @@ const dashboard = () => {
       recentOrders.push(order);
     }
   });
-  console.log(recentOrders);
+ 
 
   const finalRecentOrder = recentOrders.slice(0, 10);
-  console.log(finalRecentOrder);
+
 
   const topOrders = [];
   result.forEach((order) => {
@@ -217,9 +215,9 @@ const dashboard = () => {
       topOrders.push(order);
     }
   });
-  console.log(topOrders);
+
   const topTenOrders = topOrders.slice(0, 10);
-  console.log(topTenOrders);
+
 
   let weeklyResult = {};
   let weekSize = 7;
@@ -242,7 +240,7 @@ const dashboard = () => {
 
     weekCount++;
   }
-  console.log(weeklyResult);
+ 
   const [activeWeek, setActiveWeek] = useState("last 1 week");
 
   const handleWeek = (e) => {
@@ -260,7 +258,7 @@ const dashboard = () => {
     total: pieChartData[data],
   }));
 
-  console.log(mainPieChartData);
+
 
   const COLORS = ["#003366", "#006400", "#FFD700", "#800000"];
 
@@ -269,7 +267,7 @@ const dashboard = () => {
   const activity = activityData.activity;
 
   const tenActivityData = activity.slice(0, 10);
-  console.log(tenActivityData);
+
 
   return (
     <div className="w-full relative flex justify-center items-center bg-(--dcmbg)">
