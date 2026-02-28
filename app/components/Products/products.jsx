@@ -162,7 +162,7 @@ const products = () => {
             bg-(--dcmbg)`}
         >
           {currentProduct ? (
-            <div className="w-full h-full relative ">
+            <div className="w-full h-full  relative ">
               {/* Back Button */}
 
               <button

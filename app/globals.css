@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
-
+.login{
+  margin: 0;
+  padding: 0;
+  
+}
 
 :root {
   --dcmbg:rgb(34, 40, 49);

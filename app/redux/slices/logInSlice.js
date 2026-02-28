@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    loginInfo: {name:"nipol"},
-    isLogin: true,
-    isRegistration : true
+    loginInfo: null,
+    isLogin: false,
+    isRegistration : false
 
 }
 
