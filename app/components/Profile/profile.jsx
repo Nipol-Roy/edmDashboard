@@ -10,8 +10,8 @@ const profile = () => {
   console.log(registrationInfo)
 
   return (
-    <div>
-      hello profile i am comming for you
+    <div className="borde h-screen flex justify-center items-center text-2xl">
+      comming soon
     </div>
   )
 }
