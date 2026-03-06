@@ -30,7 +30,9 @@ const LogIn = () => {
   const [confPassword, setConfPassword] = useState("");
   const [shopName, setShopName] = useState("");
   const [image, setImage] = useState("");
+  const [role,setRole] = useState("")
 
+  // login
   const [logInEmail, setLogInEmail] = useState("");
   const [logInPass, setLogInPass] = useState("");
 
@@ -82,6 +84,7 @@ const LogIn = () => {
       ConfPassword: confPassword,
       ShopName: shopName,
       Image: image,
+      Role:role
     };
     localStorage.setItem("registerUser", JSON.stringify(RegistrationResult));
     // localStorage.setItem("isRegistred", JSON.stringify(true));
@@ -97,6 +100,7 @@ const LogIn = () => {
     setPhone("");
     setImage("");
     setRegistration(false);
+    setRole("")
   };
   // registration part end
   // logIn part
@@ -131,15 +135,15 @@ const LogIn = () => {
     dispatch(setIsLogIn(logedInfo));
   };
 
-  console.log(isLogin, isRegistration);
+
 
   return (
     <div
-      className={`w-full login h-dvh max-w-600  flex justify-center items-center overflow-hidden box-border  relative `}
+      className="w-full login h-dvh max-w-600  flex justify-center items-center   relative "
     >
       {/* logIn Section */}
       <div
-        className={`w-full ${registration === true ? "hidden" : "flex"} h-full flex justify-start flex-col md:flex-row relative`}
+        className={`w-full ${registration === true ? "hidden" : "flex"}  h-full flex justify-center items-center  flex-col md:flex-row relative`}
       >
         <div className="w-full h-full absolute">
           <Image
@@ -175,7 +179,7 @@ const LogIn = () => {
           </div>
         </div>
 
-        <div className="w-full absolute top-0 left-0 md:relative md:w-1/2 h-full flex justify-center items-center">
+        <div className="w-full absolute top-0  h-full left-0 md:relative md:w-1/2  flex justify-center items-center">
           <div className=" flex justify-center items-center bg-(--dcbtn)   w-90 sm:w-110 rounded-md shadow-[0_4px_30px_rgba(0,0,0,0.28)]">
             <div className="w-[80%] h-full relative ">
               <div className="text-(--dctxt)  h-20 flex flex-col justify-center  items-center gap-2">
@@ -288,7 +292,7 @@ const LogIn = () => {
       {/* registration Section start */}
 
       <div
-        className={`${registration === true ? "flex" : "hidden"} border h-full `}
+        className={`${registration === true ? "flex" : "hidden"}   h-full `}
       >
         <div className="w-full h-full absolute top-0 left-0 login">
           <Image
@@ -297,7 +301,7 @@ const LogIn = () => {
             className="w-full  h-full object-cover object-center"
           />
         </div>
-        <div className="w-full     relative z-5 flex flex-col md:flex-row  gap-5 ">
+        <div className="w-full   relative z-5 flex flex-col md:flex-row  gap-5 ">
           <div className="w-full md:w-1/2 md:border-r md:border-dashed md:border-white  flex justify-start md:justify-center items-start md:items-center ">
             <div className=" flex flex-col justify-center items-center gap-1">
               <div className="w-15 h-15">
@@ -315,8 +319,10 @@ const LogIn = () => {
               </p>
             </div>
           </div>
-          <div className="w-full md:w-1/2  relative   flex justify-center items-center overflow-auto">
-            <div className="sm:w-100 relative    bg-(--dcbtn) rounded-md    xl:w-125  ">
+
+
+          <div className="w-full md:w-1/2  relative  p-3   flex justify-center items-center overflow-auto">
+            <div className="sm:w-100 relative p-3   bg-(--dcbtn) rounded-md    xl:w-125  ">
               <div className=" text-xl md:text-2xl p-2 text-white flex flex-col   justify-center  items-center">
                 Create Your Account
               </div>
@@ -369,6 +375,7 @@ const LogIn = () => {
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
+                  
                 </div>
                 {/* Password */}
                 <div className="flex flex-col px-2">
@@ -432,7 +439,7 @@ const LogIn = () => {
                 </div>
                 {/* Shop Name */}
                 <div className="grid  relative grid-cols-3 ">
-                  <div className="flex flex-col col-span-2 px-2">
+                  <div className="flex flex-col col-span-3 px-2">
                     <label htmlFor="" className="text-lg font-bold text-white">
                       Shop Name
                     </label>
@@ -446,6 +453,21 @@ const LogIn = () => {
                       onChange={(e) => setShopName(e.target.value)}
                     />
                   </div>
+                  <div className="flex flex-col col-span-2  px-2">
+                    <label htmlFor="" className="text-lg font-bold text-white">
+                      Role
+                    </label>
+                    <input
+                      required
+                      value={role}
+                      type="text"
+                      className="outline-none p-2 rounded-md bg-white  w-full"
+                      placeholder="Enter your Full Name"
+                      name="ShopName"
+                      onChange={(e) => setRole(e.target.value)}
+                    />
+                  </div>
+                 
                   {/* image */}
                   <div className="h-full w-full text-sm  col-span-1 flex-col   flex justify-center items-center  py-1">
                     <label
@@ -469,6 +491,9 @@ const LogIn = () => {
                     />
                   </div>
                 </div>
+
+                 
+
 
                 <div className=" w-full px-2 flex flex-col  ">
                   <button
