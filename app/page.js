@@ -7,14 +7,14 @@ import { useSelector } from "react-redux";
 
 
 const page = () => {
-  const { loginInfo,registrationInfo } = useSelector(
+  const { loginInfo} = useSelector(
     (state) => state.Login,
   );
 
   return (
     <div className="font-mono">
       <div>
-        {loginInfo && registrationInfo ? (
+        {loginInfo  ? (
           <MainComponent />
         ) : (
           <LogIn />

@@ -44,20 +44,19 @@ const LogIn = () => {
   useEffect(() => {
     const user = localStorage.getItem("registerUser");
     const login = localStorage.getItem("logedIn");
-    // console.log(JSON.parse(localStorage.getItem("registerUser")))
+
     if (user) {
-      dispatch(
-        storeRegistration(JSON.parse(localStorage.getItem("registerUser"))),
-      );
+      dispatch(storeRegistration(JSON.parse(user)));
     }
     if (login) {
-      dispatch(setIsLogIn(JSON.parse(localStorage.getItem("logedIn"))));
+      dispatch(setIsLogIn(JSON.parse(login)));
     }
   }, [dispatch]);
 
   // Registration Part
   const handleRegSubmit = (e) => {
     e.preventDefault();
+    setError("")
 
     if (password != confPassword) {
       setError("does not Match your password");
@@ -105,22 +104,27 @@ const LogIn = () => {
   const handleLogInSubmit = (e) => {
     e.preventDefault();
     setLogInError("");
-    console.log(logInEmail, logInPass);
+ 
+
+    if (!registrationInfo) {
+    setLogInError("No account found. Please register first.");
+    return;
+  }
 
     if (logInPass !== registrationInfo?.ConfPassword) {
       setLogInError("Incorrect Password Please Try Again");
       return;
     }
-    if (logInEmail !== registrationInfo?.Email) {
-      setLogInError("Incorrect Email Please Try Again");
-      return;
-    }
+   
+     if (logInEmail !== registrationInfo.Email) {
+    setLogInError("Incorrect Email");
+    return;
+  }
 
     const logedInfo = {
       email: logInEmail,
       pass: logInPass,
     };
-
 
     localStorage.setItem("logedIn", JSON.stringify(logedInfo));
 
@@ -131,7 +135,7 @@ const LogIn = () => {
 
   return (
     <div
-      className={`w-full login h-dvh max-w-600 overflow-hidden box-border  relative `}
+      className={`w-full login h-dvh max-w-600  flex justify-center items-center overflow-hidden box-border  relative `}
     >
       {/* logIn Section */}
       <div
@@ -171,9 +175,9 @@ const LogIn = () => {
           </div>
         </div>
 
-        <div className="w-full absolute top-0 left-0 md:relative  md:w-1/2 h-full flex justify-center items-center">
-          <div className=" flex justify-center items-center bg-(--dcbtn) h-[60%] w-90 sm:w-110 rounded-md shadow-[0_4px_30px_rgba(0,0,0,0.28)]">
-            <div className="w-[80%] h-[90%] relative ">
+        <div className="w-full absolute top-0 left-0 md:relative md:w-1/2 h-full flex justify-center items-center">
+          <div className=" flex justify-center items-center bg-(--dcbtn)   w-90 sm:w-110 rounded-md shadow-[0_4px_30px_rgba(0,0,0,0.28)]">
+            <div className="w-[80%] h-full relative ">
               <div className="text-(--dctxt)  h-20 flex flex-col justify-center  items-center gap-2">
                 <div className="text-2xl font-bold">Admin Login</div>
                 <div>Sign in to Your account</div>
@@ -182,7 +186,7 @@ const LogIn = () => {
                 <form
                   action=""
                   onSubmit={(e) => handleLogInSubmit(e)}
-                  className="gap-4 flex flex-col "
+                  className="gap-2 flex flex-col "
                 >
                   <div>
                     <label htmlFor="" className="text-lg text-white">
@@ -201,6 +205,11 @@ const LogIn = () => {
                         className="outline-none  text-md w-full p-2"
                       />
                     </div>
+                    {/* <p
+                      className={`${logInError ? "block" : "hidden"} text-red-600 py-1 font-medium`}
+                    >
+                      {logInError}
+                    </p> */}
                   </div>
 
                   <div>
@@ -261,7 +270,7 @@ const LogIn = () => {
                 </button>
               </div>
 
-              <div className="p-2 w-full flex justify-end items-center absolute bottom-0 right-0 text-white">
+              <div className="p-2 w-full flex justify-end items-center text-white">
                 I don't have account
                 <span
                   onClick={() => setRegistration(!registration)}
@@ -278,7 +287,9 @@ const LogIn = () => {
 
       {/* registration Section start */}
 
-      <div className={`${registration === true ? "flex" : "hidden"}  `}>
+      <div
+        className={`${registration === true ? "flex" : "hidden"} border h-full `}
+      >
         <div className="w-full h-full absolute top-0 left-0 login">
           <Image
             src={bgImage}
@@ -286,8 +297,8 @@ const LogIn = () => {
             className="w-full  h-full object-cover object-center"
           />
         </div>
-        <div className="w-full  h-screen z-5 flex flex-col md:flex-row justify-start md:justify-center items-center">
-          <div className="w-full md:w-1/2 md:border-r md:border-dashed md:border-white h-[18%] flex justify-center items-center md:h-full">
+        <div className="w-full     relative z-5 flex flex-col md:flex-row  gap-5 ">
+          <div className="w-full md:w-1/2 md:border-r md:border-dashed md:border-white  flex justify-start md:justify-center items-start md:items-center ">
             <div className=" flex flex-col justify-center items-center gap-1">
               <div className="w-15 h-15">
                 <Image
@@ -304,210 +315,188 @@ const LogIn = () => {
               </p>
             </div>
           </div>
-          <div className="w-full md:w-1/2  h-full flex justify-center items-center ">
-            <div className="w-[96%] h-[96%] relative   bg-(--lcbtn) rounded-md flex justify-center items-center">
-              <div className="sm:w-100 relative h-full sm:h-[93%] w-full  bg-(--dcbtn) rounded-md overflow-hidden   xl:w-125 xl:h-200  ">
-                <div className=" text-2xl flex flex-col  py-4 justify-start  items-center">
-                  <div className=" text-2xl font-bold text-white">
-                    Create Your Account
-                  </div>
+          <div className="w-full md:w-1/2  relative   flex justify-center items-center overflow-auto">
+            <div className="sm:w-100 relative    bg-(--dcbtn) rounded-md    xl:w-125  ">
+              <div className=" text-xl md:text-2xl p-2 text-white flex flex-col   justify-center  items-center">
+                Create Your Account
+              </div>
+              <form action="" onSubmit={(e) => handleRegSubmit(e)}>
+                {/* Full Name */}
+                <div className="flex flex-col px-2 ">
+                  <label htmlFor="" className="text-lg font-bold text-white">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    minLength={2}
+                    maxLength={30}
+                    className="outline-none  rounded-md bg-white p-2  w-full"
+                    placeholder="Enter your Full Name"
+                    name="FullName"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
                 </div>
-                <form action="" onSubmit={(e) => handleRegSubmit(e)}>
-                  {/* Full Name */}
-                  <div className="flex flex-col p-2">
+                {/* Email */}
+                <div className="grid grid-cols-2 md:grid-cols-1">
+                  <div className="flex flex-col  px-2">
                     <label htmlFor="" className="text-lg font-bold text-white">
-                      Full Name
+                      Email
                     </label>
                     <input
-                      type="text"
+                      type="email"
                       required
-                      minLength={2}
-                      maxLength={30}
-                      className="outline-none p-1 py-2 rounded-md  bg-white  w-full"
-                      placeholder="Enter your Full Name"
-                      name="FullName"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
+                      value={email}
+                      className="outline-none p-2  rounded-md bg-white  w-full"
+                      placeholder="Enter your valid Email"
+                      name="Email"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
-                  {/* Email */}
-                  <div className="grid grid-cols-2 md:grid-cols-1">
-                    <div className="flex flex-col  p-2">
-                      <label
-                        htmlFor=""
-                        className="text-lg font-bold text-white"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={email}
-                        className="outline-none p-1 py-2 rounded-md bg-white  w-full"
-                        placeholder="Enter your valid Email"
-                        name="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
-                    {/* Phone Number */}
-                    <div className="flex flex-col p-2">
-                      <label
-                        htmlFor=""
-                        className="text-lg font-bold text-white"
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        value={phone}
-                        required
-                        type="number"
-                        className="outline-none p-1 py-2 rounded-md bg-white  w-full"
-                        placeholder="Enter your Full Name"
-                        name="PhoneNumber"
-                        onChange={(e) => setPhone(e.target.value)}
-                      />
-                      <p
-                        className={`${error ? "block" : "hidden"} text-red-600 py-1 font-medium`}
-                      >
-                        {error}
-                      </p>
-                    </div>
-                  </div>
-                  {/* Password */}
-                  <div className="flex flex-col p-2">
+                  {/* Phone Number */}
+                  <div className="flex flex-col px-2">
                     <label htmlFor="" className="text-lg font-bold text-white">
-                      Password
+                      Phone Number
                     </label>
-                    <div
-                      className={`flex rounded-md  justify-between items-center bg-white ${error ? "border text-red-600 border-red-600" : ""}`}
-                    >
-                      <input
-                        required
-                        value={password}
-                        type={`${regHidePassword ? "text" : "password"}`}
-                        className="outline-none p-1 py-2 rounded-md   w-full"
-                        placeholder="Enter your Full Name"
-                        name="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <div
-                        onClick={() => setRegHidePassword(!regHidePassword)}
-                        className="text-2xl text-(--dcbtn) cursor-pointer pr-2"
-                      >
-                        {regHidePassword ? <BiSolidHide /> : <BiSolidShow />}
-                      </div>
-                    </div>
-                    <p
-                      className={`${error ? "block" : "hidden"} text-red-600 py-1 font-medium`}
-                    >
-                      {error}
-                    </p>
+                    <input
+                      value={phone}
+                      required
+                      type="number"
+                      className="outline-none p-2 rounded-md bg-white  w-full"
+                      placeholder="Enter your Full Name"
+                      name="PhoneNumber"
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
                   </div>
-                  {/* Confirm Password */}
-                  <div className="flex  flex-col p-2">
-                    <label htmlFor="" className="text-lg font-bold text-white">
-                      Confirm Password
-                    </label>
-                    <div
-                      className={`bg-white  rounded-md flex justify-between items-center ${error ? " border border-red-600 text-red-600" : ""}`}
-                    >
-                      <input
-                        required
-                        value={confPassword}
-                        type={`${confHidePassword ? "text" : "password"}`}
-                        className="outline-none p-2   "
-                        placeholder="Enter your Full Name"
-                        name="ConfirmPassword"
-                        onChange={(e) => setConfPassword(e.target.value)}
-                      />
-                      <div
-                        onClick={() => setConfHidePassword(!confHidePassword)}
-                        className="text-2xl text-(--dcbtn)  cursor-pointer pr-2"
-                      >
-                        {confHidePassword ? <BiSolidHide /> : <BiSolidShow />}
-                      </div>
-                    </div>
-                    <p
-                      className={`${error ? "block" : "hidden"} text-red-600 py-1 font-medium`}
-                    >
-                      {error}
-                    </p>
-                  </div>
-                  {/* Shop Name */}
-                  <div className="grid  relative grid-cols-3 ">
-                    <div className="flex flex-col col-span-2 p-2">
-                      <label
-                        htmlFor=""
-                        className="text-lg font-bold text-white"
-                      >
-                        Shop Name
-                      </label>
-                      <input
-                        required
-                        value={shopName}
-                        type="text"
-                        className="outline-none p-1 py-2 rounded-md bg-white  w-full"
-                        placeholder="Enter your Full Name"
-                        name="ShopName"
-                        onChange={(e) => setShopName(e.target.value)}
-                      />
-                    </div>
-                    {/* image */}
-                    <div className="h-full w-full text-sm  col-span-1 flex-col   flex justify-center items-center  py-1">
-                      <label
-                        htmlFor="profileImage"
-                        className="cursor-pointer p-2  rounded-lg bg-(--dcmbg) text-white relative"
-                      >
-                        <Image
-                          src={ImageIcon}
-                          className="h-20 w-25 object-cover object-center "
-                        />
-                      </label>
-                      <div
-                        className={`text-white py-2 ${error ? "text-red-600" : ""}`}
-                      >
-                        Profile Image
-                      </div>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        id="profileImage"
-                        hidden
-                        onChange={(e) => setImage(e.target.value)}
-                        value={image}
-                        name="ProfileImage"
-                      />
-                    </div>
-                  </div>
-
-                  <div className=" w-full p-2 flex flex-col  ">
-                    <button
-                      className="text-white  rounded-md cursor-pointer hover:scale-101 transition 
-                   w-full py-2 hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] bg-[#005B75]   "
-                    >
-                      Submit
-                    </button>
-
-                    <div className=" h-10 text-white flex justify-center items-center">
-                      <div className="w-[45%] h-0.2 border"></div>
-                      <div className="text-xl font-bold p-2">OR</div>
-                      <div className="w-[45%] h-0.2 border"></div>
-                    </div>
-                    <button className="flex justify-center cursor-pointer items-center  text-md  w-full py-2 hover:scale-102 transition rounded-md  hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] text-white bg-[#009DA3] ">
-                      <FcGoogle className="text-2xl" /> Sign in with Google
-                    </button>
-                  </div>
-                </form>
-
-                <div className="w-full absolute bottom-0 text-right px-3 text-white ">
-                  i have already a Account
-                  <span
-                    onClick={() => setRegistration(!registration)}
-                    className="text-lg underline text-blue-200 hover:text-blue-700"
-                  >
-                    LogIn
-                  </span>
                 </div>
+                {/* Password */}
+                <div className="flex flex-col px-2">
+                  <label htmlFor="" className="text-lg font-bold text-white">
+                    Password
+                  </label>
+                  <div
+                    className={`flex rounded-md  justify-between items-center bg-white ${error ? "border text-red-600 border-red-600" : ""}`}
+                  >
+                    <input
+                      required
+                      value={password}
+                      type={`${regHidePassword ? "text" : "password"}`}
+                      className="outline-none p-2 rounded-md   w-full"
+                      placeholder="Enter your Full Name"
+                      name="Password"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <div
+                      onClick={() => setRegHidePassword(!regHidePassword)}
+                      className="text-2xl text-(--dcbtn) cursor-pointer pr-2"
+                    >
+                      {regHidePassword ? <BiSolidHide /> : <BiSolidShow />}
+                    </div>
+                  </div>
+                  <p
+                    className={`${error ? "block" : "hidden"} text-red-600 py-1 font-medium`}
+                  >
+                    {error}
+                  </p>
+                </div>
+                {/* Confirm Password */}
+                <div className="flex  flex-col px-2">
+                  <label htmlFor="" className="text-lg font-bold text-white">
+                    Confirm Password
+                  </label>
+                  <div
+                    className={`bg-white  rounded-md flex justify-between items-center ${error ? " border border-red-600 text-red-600" : ""}`}
+                  >
+                    <input
+                      required
+                      value={confPassword}
+                      type={`${confHidePassword ? "text" : "password"}`}
+                      className="outline-none p-2   "
+                      placeholder="Enter your Full Name"
+                      name="ConfirmPassword"
+                      onChange={(e) => setConfPassword(e.target.value)}
+                    />
+                    <div
+                      onClick={() => setConfHidePassword(!confHidePassword)}
+                      className="text-2xl text-(--dcbtn)  cursor-pointer pr-2"
+                    >
+                      {confHidePassword ? <BiSolidHide /> : <BiSolidShow />}
+                    </div>
+                  </div>
+                  <p
+                    className={`${error ? "block" : "hidden"} text-red-600 py-1 font-medium`}
+                  >
+                    {error}
+                  </p>
+                </div>
+                {/* Shop Name */}
+                <div className="grid  relative grid-cols-3 ">
+                  <div className="flex flex-col col-span-2 px-2">
+                    <label htmlFor="" className="text-lg font-bold text-white">
+                      Shop Name
+                    </label>
+                    <input
+                      required
+                      value={shopName}
+                      type="text"
+                      className="outline-none p-2 rounded-md bg-white  w-full"
+                      placeholder="Enter your Full Name"
+                      name="ShopName"
+                      onChange={(e) => setShopName(e.target.value)}
+                    />
+                  </div>
+                  {/* image */}
+                  <div className="h-full w-full text-sm  col-span-1 flex-col   flex justify-center items-center  py-1">
+                    <label
+                      htmlFor="profileImage"
+                      className="cursor-pointer p-2  rounded-lg bg-(--dcmbg) text-white relative"
+                    >
+                      <Image
+                        src={ImageIcon}
+                        className="h-16 w-20 object-cover object-center "
+                      />
+                    </label>
+                    <div className="text-white py-1 ">Profile Image</div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="profileImage"
+                      hidden
+                      onChange={(e) => setImage(e.target.value)}
+                      value={image}
+                      name="ProfileImage"
+                    />
+                  </div>
+                </div>
+
+                <div className=" w-full px-2 flex flex-col  ">
+                  <button
+                    className="text-white  rounded-md cursor-pointer hover:scale-101 transition 
+                   w-full py-1 md:py-2 hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] bg-[#005B75]   "
+                  >
+                    Submit
+                  </button>
+
+                  <div className=" h-10 text-white flex justify-center items-center">
+                    <div className="w-[45%] h-0.2 border"></div>
+                    <div className="text-xl font-bold p-2">OR</div>
+                    <div className="w-[45%] h-0.2 border"></div>
+                  </div>
+                  <button className="flex justify-center cursor-pointer items-center  text-md  w-full py-1 md:py-2 hover:scale-102 transition rounded-md  hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] text-white bg-[#009DA3] ">
+                    <FcGoogle className="text-2xl" /> Sign in with Google
+                  </button>
+                </div>
+              </form>
+
+              <div className="w-full p-3 text-right  text-white ">
+                i have already a Account
+                <span
+                  onClick={() => setRegistration(!registration)}
+                  className="text-lg underline text-blue-200 hover:text-blue-700"
+                >
+                  LogIn
+                </span>
               </div>
             </div>
           </div>
