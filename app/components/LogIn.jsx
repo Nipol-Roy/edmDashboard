@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import bgImage from "../../public/data/images/loginBg.jpg";
+// import bgImage from "../../public/data/images/loginBg.jpg";
 import Logo from "../../public/data/images/logo.png";
 import ImageIcon from "../../public/data/images/Image Logo.png";
+import bgImage from "../../public/data/images/signing-Background.png";
 import { useEffect, useState } from "react";
 
 import { MdShoppingCart } from "react-icons/md";
@@ -17,6 +18,8 @@ import { HiMiniIdentification } from "react-icons/hi2";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaShop } from "react-icons/fa6";
 import { GiAchievement } from "react-icons/gi";
+import { IoPerson } from "react-icons/io5";
+import { FaLock } from "react-icons/fa6";
 
 import { useDispatch, useSelector } from "react-redux";
 import { storeRegistration, setIsLogIn } from "../redux/slices/logInSlice";
@@ -140,7 +143,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="w-full login flex justify-center items-center   relative ">
+    <div className="w-full login flex justify-center items-center h-screen  relative ">
       <div className="w-full h-full absolute top-0 left-0">
         <Image
           src={bgImage}
@@ -152,7 +155,7 @@ const LogIn = () => {
       <div className="h-full w-full  min-h-screen  overflow-auto z-50 flex justify-center  py-5  items-center flex-col md:flex-row">
         <div className="w-full md:w-[45%] h-40    relative    ">
           <div
-            className="  flex flex-col justify-center items-center 
+            className="  flex flex-col justify-center  items-center 
              md:-translate-y-2/3   text-white w-full gap-2"
           >
             <div className="flex  justify-center  items-center gap-2">
@@ -171,18 +174,23 @@ const LogIn = () => {
                 </p>
               </div>
             </div>
-            <div className="w-full flex justify-center text-center text-md items-center">
+            <div className=" flex justify-center items-center   text-md ">
               <p>Manage Orders, Customers & Analytics Efficently</p>
             </div>
           </div>
         </div>
 
-        <div className=" w-full md:w-[55%] h-full flex justify-center items-center">
+        <div className=" w-full md:w-[55%]  h-full flex justify-center items-center ">
           <div
             className={`${registration ? "hidden" : "flex"} w-full p-3  h-full  relative  flex justify-center items-center`}
           >
-            <div className=" flex justify-center items-center bg-[#101828] py-3  w-90 sm:w-110 rounded-md shadow-[0_4px_30px_rgba(0,0,0,0.28)]">
-              <div className="w-[80%] h-full relative ">
+            <div className=" flex justify-center items-center  bg-[#588bf81e] border border-gray-700 p-3  w-90 sm:w-110 rounded-md shadow-[0_4px_30px_rgba(0,0,0,0.28)]">
+              <div className=" h-full relative w-full p-3 ">
+                <div className="w-full h-20  flex justify-center items-center">
+                <div className="text-4xl border p-4 rounded-full text-blue-900 bg-linear-to-r from-blue-600 to-cyan-500">
+                  <FaLock />
+                </div>
+              </div>
                 <div className="text-(--dctxt)  h-20 flex flex-col justify-center  items-center gap-2">
                   <div className="text-2xl font-bold">Admin Login</div>
                   <div>Sign in to Your account</div>
@@ -191,7 +199,7 @@ const LogIn = () => {
                 <form
                   action=""
                   onSubmit={(e) => handleLogInSubmit(e)}
-                  className="gap-2 flex flex-col "
+                  className="gap-2 flex flex-col  "
                 >
                   <label htmlFor="" className="text-lg text-white">
                     Email
@@ -256,7 +264,7 @@ const LogIn = () => {
 
                   <button
                     type="submit"
-                    className="hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] transition hover:scale-102 py-2 text-white bg-[#005B75] rounded-md text-md w-full"
+                    className=" bg-linear-to-r from-blue-600 to-cyan-500 hover:to-blue-600 hover:from-cyan-500 transition hover:scale-102 py-2 text-white  rounded-md text-md w-full"
                   >
                     LogIn
                   </button>
@@ -269,7 +277,7 @@ const LogIn = () => {
                 </div>
 
                 <div className="w-full  ">
-                  <button className="flex justify-center items-center gap-2 text-md  w-full py-2 hover:scale-102 transition rounded-md  hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] text-white bg-[#009DA3] ">
+                  <button className="flex justify-center items-center gap-2 text-md  w-full py-2 hover:scale-102 transition rounded-md  hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)]  bg-white text-gray-900 ">
                     <FcGoogle className="text-2xl" /> Sign in with Google
                   </button>
                 </div>
@@ -288,9 +296,14 @@ const LogIn = () => {
           </div>
 
           <div
-            className={`${registration ? "flex" : "hidden"} w-full   relative  p-3   flex justify-center items-center overflow-auto`}
+            className={`${registration ? "flex" : "hidden"} w-full   relative  p-3  flex justify-center items-center overflow-auto`}
           >
-            <div className="relative p-3   bg-[#101828] rounded-md    w-90  sm:w-110   ">
+            <div className="relative p-3   bg-[#588bf81e] border border-gray-600 rounded-md   h-full   w-90  sm:w-110   ">
+              <div className="w-full h-20  flex justify-center items-center">
+                <div className="text-5xl border p-2 rounded-full text-blue-900 bg-linear-to-r from-blue-600 to-cyan-50">
+                  <IoPerson />
+                </div>
+              </div>
               <div className=" text-xl md:text-2xl p-2 text-white flex flex-col   justify-center  items-center">
                 Create Your Account
               </div>
@@ -305,8 +318,8 @@ const LogIn = () => {
                     Full Name
                   </label>
 
-                  <div className="outline-none  rounded-md bg-white p-3 gap-3 flex  w-full">
-                    <div className="text-2xl text-(--dcbtn) ">
+                  <div className="outline-none  rounded-md bg-white p-2  gap-3 flex justify-center items-center  w-full">
+                    <div className="text-xl text-(--dcbtn) ">
                       <HiMiniIdentification />
                     </div>
                     <input
@@ -328,19 +341,19 @@ const LogIn = () => {
                     <label htmlFor="" className="text-lg font-bold text-white">
                       Email
                     </label>
-                    <div className="outline-none  rounded-md bg-white p-3 gap-3 flex  w-full">
-                    <div className="text-2xl text-(--dcbtn) ">
-                      <MdOutlineEmail />
-                    </div>
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      className="outline-none  text-md  rounded-md bg-white  w-full"
-                      placeholder="Enter your valid Email"
-                      name="Email"
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
+                    <div className="outline-none  rounded-md bg-white  p-2  gap-3 flex justify-center items-center  w-full">
+                      <div className="text-xl text-(--dcbtn) ">
+                        <MdOutlineEmail />
+                      </div>
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        className="outline-none  text-md  rounded-md bg-white  w-full"
+                        placeholder="Enter your valid Email"
+                        name="Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
                     </div>
                   </div>
                   {/* Phone Number */}
@@ -348,19 +361,19 @@ const LogIn = () => {
                     <label htmlFor="" className="text-lg font-bold text-white">
                       Phone Number
                     </label>
-                    <div className="outline-none  rounded-md bg-white p-3 gap-3 flex  w-full">
-                    <div className="text-2xl text-(--dcbtn) ">
-                      <FaPhoneAlt />
-                    </div>
-                    <input
-                      value={phone}
-                      required
-                      type="number"
-                      className="outline-none text-md  rounded-md bg-white  w-full"
-                      placeholder="Enter your Full Name"
-                      name="PhoneNumber"
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
+                    <div className="outline-none  rounded-md bg-white  p-2  gap-3 flex justify-center items-center  w-full">
+                      <div className="text-xl text-(--dcbtn) ">
+                        <FaPhoneAlt />
+                      </div>
+                      <input
+                        value={phone}
+                        required
+                        type="number"
+                        className="outline-none text-md  rounded-md bg-white  w-full"
+                        placeholder="Enter your Full Name"
+                        name="PhoneNumber"
+                        onChange={(e) => setPhone(e.target.value)}
+                      />
                     </div>
                   </div>
                 </div>
@@ -372,23 +385,23 @@ const LogIn = () => {
                   <div
                     className={`flex rounded-md  justify-between items-center bg-white ${error ? "border text-red-600 border-red-600" : ""}`}
                   >
-                    <div className="outline-none  rounded-md bg-white p-3 gap-3 flex  w-full">
-                    <div className="text-2xl text-(--dcbtn) ">
-                      <TbLockPassword />
-                    </div>
-                    <input
-                      required
-                      value={password}
-                      type={`${regHidePassword ? "text" : "password"}`}
-                      className="outline-none text-md  rounded-md   w-full"
-                      placeholder="Enter your Full Name"
-                      name="Password"
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
+                    <div className="outline-none  rounded-md bg-white  p-2  gap-3 flex justify-center items-center w-full">
+                      <div className="text-xl text-(--dcbtn) ">
+                        <TbLockPassword />
+                      </div>
+                      <input
+                        required
+                        value={password}
+                        type={`${regHidePassword ? "text" : "password"}`}
+                        className="outline-none text-md  rounded-md   w-full"
+                        placeholder="Enter your Full Name"
+                        name="Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
                     </div>
                     <div
                       onClick={() => setRegHidePassword(!regHidePassword)}
-                      className="text-2xl text-(--dcbtn) cursor-pointer pr-2"
+                      className="text-xl text-(--dcbtn) cursor-pointer pr-2"
                     >
                       {regHidePassword ? <BiSolidHide /> : <BiSolidShow />}
                     </div>
@@ -407,23 +420,23 @@ const LogIn = () => {
                   <div
                     className={`bg-white  rounded-md flex justify-between items-center ${error ? " border border-red-600 text-red-600" : ""}`}
                   >
-                    <div className="outline-none  rounded-md bg-white p-3 gap-3 flex  w-full">
-                    <div className="text-2xl text-(--dcbtn) ">
-                      <TbLockPassword />
-                    </div>
-                    <input
-                      required
-                      value={confPassword}
-                      type={`${confHidePassword ? "text" : "password"}`}
-                      className="outline-none  text-md  "
-                      placeholder="Enter your Full Name"
-                      name="ConfirmPassword"
-                      onChange={(e) => setConfPassword(e.target.value)}
-                    />
+                    <div className="outline-none   rounded-md bg-white  p-2  gap-3 flex justify-center items-center  w-full">
+                      <div className="text-xl text-(--dcbtn) ">
+                        <TbLockPassword />
+                      </div>
+                      <input
+                        required
+                        value={confPassword}
+                        type={`${confHidePassword ? "text" : "password"}`}
+                        className="outline-none text-md  rounded-md   w-full"
+                        placeholder="Enter your Full Name"
+                        name="ConfirmPassword"
+                        onChange={(e) => setConfPassword(e.target.value)}
+                      />
                     </div>
                     <div
                       onClick={() => setConfHidePassword(!confHidePassword)}
-                      className="text-2xl text-(--dcbtn)  cursor-pointer pr-2"
+                      className="text-xl text-(--dcbtn)  cursor-pointer pr-2"
                     >
                       {confHidePassword ? <BiSolidHide /> : <BiSolidShow />}
                     </div>
@@ -440,38 +453,38 @@ const LogIn = () => {
                     <label htmlFor="" className="text-lg font-bold text-white">
                       Shop Name
                     </label>
-                    <div className="outline-none  rounded-md bg-white p-3 gap-3 flex  w-full">
-                    <div className="text-2xl text-(--dcbtn) ">
-                      <FaShop />
-                    </div>
-                    <input
-                      required
-                      value={shopName}
-                      type="text"
-                      className="outline-none  text-md rounded-md bg-white  w-full"
-                      placeholder="Enter your Full Name"
-                      name="ShopName"
-                      onChange={(e) => setShopName(e.target.value)}
-                    />
+                    <div className="outline-none  rounded-md bg-white  p-2  gap-3 flex justify-center items-center  w-full">
+                      <div className="text-xl text-(--dcbtn) ">
+                        <FaShop />
+                      </div>
+                      <input
+                        required
+                        value={shopName}
+                        type="text"
+                        className="outline-none  text-md rounded-md bg-white  w-full"
+                        placeholder="Enter your Full Name"
+                        name="ShopName"
+                        onChange={(e) => setShopName(e.target.value)}
+                      />
                     </div>
                   </div>
                   <div className="flex flex-col col-span-2  px-2">
                     <label htmlFor="" className="text-lg font-bold text-white">
                       Role
                     </label>
-                    <div className="outline-none  rounded-md bg-white p-3 gap-3 flex  w-full">
-                    <div className="text-2xl text-(--dcbtn) ">
-                      <GiAchievement />
-                    </div>
-                    <input
-                      required
-                      value={role}
-                      type="text"
-                      className="outline-none text-md  rounded-md bg-white  w-full"
-                      placeholder="Enter your Full Name"
-                      name="ShopName"
-                      onChange={(e) => setRole(e.target.value)}
-                    />
+                    <div className="outline-none  rounded-md bg-white  p-2  gap-3 flex justify-center items-center w-full">
+                      <div className="text-2xl text-(--dcbtn) ">
+                        <GiAchievement />
+                      </div>
+                      <input
+                        required
+                        value={role}
+                        type="text"
+                        className="outline-none text-md  rounded-md bg-white  w-full"
+                        placeholder="Enter your Full Name"
+                        name="ShopName"
+                        onChange={(e) => setRole(e.target.value)}
+                      />
                     </div>
                   </div>
 
@@ -502,7 +515,7 @@ const LogIn = () => {
                 <div className=" w-full px-2 flex flex-col  ">
                   <button
                     className="text-white  rounded-md cursor-pointer hover:scale-101 transition
-                   w-full py-1 md:py-2 hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] bg-[#005B75]   "
+                   w-full py-1 md:py-2 hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] bg-linear-to-r from-blue-600 to-cyan-500 hover:to-blue-600 hover:from-cyan-500   "
                   >
                     Submit
                   </button>
@@ -512,7 +525,7 @@ const LogIn = () => {
                     <div className="text-xl font-bold p-2">OR</div>
                     <div className="w-[45%] h-0.2 border"></div>
                   </div>
-                  <button className="flex justify-center cursor-pointer items-center  text-md  w-full py-1 md:py-2 hover:scale-102 transition rounded-md  hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] text-white bg-[#009DA3] ">
+                  <button className="flex justify-center cursor-pointer items-center  text-md  w-full py-1 md:py-2 hover:scale-102 transition rounded-md  hover:shadow-[0_4px_10px_rgba(0,0,0,0.28)] bg-white text-gray-900 ">
                     <FcGoogle className="text-2xl" /> Sign in with Google
                   </button>
                 </div>
